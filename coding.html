@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coding</title>
+    <link rel="stylesheet" href="./index.css">
+    <script src="./index.js"></script>
+    <script src="https://kit.fontawesome.com/f9b14b8f58.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="navbar">
+        <ul class="navbar_ul">
+            <li style="float:left">
+                <a class="home_button navbar_item" href="home.html">Home</a>
+            </li>
+            <li style="float:left">
+                <a class="coding_button active navbar_item" href="coding.html">Coding</a>
+            </li>
+            <!-- <li style="float:left">
+                <a class="navbar_item" href="#contact">Contact</a>
+            </li> -->
+            <li style="float:right">
+                <img class="logo" src="./assets/logo.jpg">
+            </li>
+            <li style="float:right">
+                <a class="navbar_item" href="https://github.com/astromonkey123">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+            </li>
+            <li style="float:right">
+                <a class="navbar_item" href="https://www.youtube.com/@scout_raptor">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="container">
+        <h1>Electromagnetism</h1>
+        <article>
+            Classical electromagnetism or classical electrodynamics is a branch of theoretical physics that studies the interactions between electric charges and currents using an extension of the classical Newtonian model.
+            The theory of electromagnetism, as it is currently understood, grew out of Michael Faraday's experiments suggesting the existence of an electromagnetic field and James Clerk Maxwell's use of differential equations to describe it in his A Treatise on Electricity and Magnetism (1873). 
+            <a style="color:lightskyblue" href="https://en.wikipedia.org/wiki/Classical_electromagnetism">Wikipedia</a>
+        </article>
+        <h2>Maxwell-Heaviside Equations</h2>
+        <h4>Gauss's Law</h4>
+        <math display="block" class="tml-display" style="display:block math;margin-bottom:15px;">
+            <mrow>
+            <mo>∇</mo>
+            <mo form="prefix" stretchy="false">⋅</mo>
+            <mi>E</mi>
+            <mo>=</mo>
+            <mfrac>
+                <mi>ρ</mi>
+                <msub>
+                <mi>ϵ</mi>
+                <mn>0</mn>
+                </msub>
+            </mfrac>
+            </mrow>
+        </math>
+        <article style="margin-left:75px">
+            Gauss's Law relates the outward flow of the electric field at a point (∇⋅E) to the charge density at that point (ρ).
+            For example, if we have a proton floating in space, our charge density around that proton would be positive, so we should expect an outward flow in the electric field vectors  around it.
+            That makes sense considering the electric field vectors describe the motion of a positive charge, and that positives repell each other.
+        </article>
+        <h4>Gauss's Law for Magnetism</h4>
+        <math display="block" class="tml-display" style="display:block math;">
+            <mrow>
+                <mo>∇</mo>
+                <mo form="prefix" stretchy="false">⋅</mo>
+                <mi>B</mi>
+                <mo>=</mo>
+                <mn>0</mn>
+            </mrow>
+        </math>
+        <article style="margin-left:75px">
+            Gauss's Law for Magnetism states that the outward flow of the magnetic field at a point (∇⋅B) is always zero.
+            An interesting consequence is that there are no magnetic monopoles, i.e. you can't have a north pole without a south pole, unlike the electric field where negatively charged particles exist independently of positive charges.
+        </article>
+        <h4>Faraday's Law of Induction</h4>
+        <math display="block" class="tml-display" style="display:block math;">
+            <mrow>
+                <mo>∇</mo>
+                <mo form="prefix" stretchy="false">×</mo>
+                <mi>E</mi>
+                <mo>=</mo>
+                <mo form="prefix" stretchy="false">−</mo>
+                <mfrac>
+                    <mrow>
+                        <mi>∂</mi>
+                        <mi>B</mi>
+                    </mrow>
+                    <mrow>
+                        <mi>∂</mi>
+                        <mi>t</mi>
+                    </mrow>
+                </mfrac>
+            </mrow>
+        </math>
+        <article style="margin-left:75px">
+            Faraday's Law of Induction relates how curled up the electric field is (∇×E) to how quickly the magnetic field changes over time (∂B/∂t). 
+        </article>
+        <h4>Ampere-Maxwell Law</h4>
+        <math display="block" class="tml-display" style="display:block math;">
+            <mrow>
+                <mo>∇</mo>
+                <mo form="prefix" stretchy="false">×</mo>
+                <mi>B</mi>
+                <mo>=</mo>
+                <msub>
+                    <mi>μ</mi>
+                    <mn>0</mn>
+                </msub>
+                <mo form="prefix" stretchy="false">(</mo>
+                <mi>J</mi>
+                <mo>+</mo>
+                <msub>
+                    <mi>ϵ</mi>
+                    <mn>0</mn>
+                </msub>
+                <mfrac>
+                    <mrow>
+                    <mi>∂</mi>
+                    <mi>E</mi>
+                    </mrow>
+                    <mrow>
+                    <mi>∂</mi>
+                    <mi>t</mi>
+                    </mrow>
+                </mfrac>
+                <mo form="postfix" stretchy="false">)</mo>
+            </mrow>
+        </math>
+        <article style="margin-left:75px">
+            The Ampere-Maxwell Law relates how curled up the magnetic field is (∇×B) to how quickly the electric field changes over time (∂E/∂t) and the current flowing through that region of space (J).
+        </article>
+        <h2>V0.1.0 - 2D</h2>
+        <article>
+            The first iteration was the electric field reacting to a point charge in two dimensions.
+        </article>
+        <video class="embed_video" width="320" height="320" controls>
+            <source src="./assets/2d_anim.mp4"
+        </video>
+    </div>
+</body>
+</html>
