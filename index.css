@@ -3,10 +3,16 @@ body {
   font-family: 'Verdana', monospace;
 }
 .navbar {
-  background-color: #282828;
+  background-color: rgba(48, 48, 48, 0.5);
+  backdrop-filter: blur(5px);
   position: fixed;
   top: 0; left: 0;
   height: 50px; width: 100%;
+  transition-duration: 0.2s;
+}
+
+.navbar-shadow {
+  box-shadow: 0 0 10px 0 rgba(0,0,0,1);
 }
 
 .center {
@@ -18,6 +24,7 @@ body {
 }
 
 .nav-item {
+  opacity: 1;
   top: 5px;
   height: 40px;
   position: relative;
