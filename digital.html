@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="center">
             <div class="nav-item" id="home">
                 <a href="index.html">Home</a>
@@ -41,10 +41,260 @@
         <div class="select-slider" id="nav-underline"></div>
     </nav>
 
-    <div class="centering">
-        <button>
-            Click me
-        </button>
+    <div class="context">
+        <h3 style="text-align: center">Color Code</h3>
+        <div style="padding: 0 25px">
+            <h4 class="in-progress">Work in Progress</h4>
+            <p>Unreleased packages that I am currently working on.</p>
+            <h4 class="updating">Update in Progress</h4>
+            <p>Released packages that I am currently working on an update for.</p>
+            <h4 class="released">Released</h4>
+            <p>Released packages that I am not currently working on updating.</p>
+        </div>
+    </div>
+
+    <div class="content">
+
+        <h1>Microsoft Flight Simulator</h1>
+
+        <div class="horizontal-content">
+            <h2>Current Projects</h2>
+            <h4><a href="https://flightsim.to/profile/scout_raptor/activities/1" target="_blank">Flightsim.to</a></h4>
+        </div>
+
+        <h4>Sceneries</h4>
+        <div class="asset-list">
+            <p class="in-progress" onclick="showHideId('kayz')">KAYZ - Zahn's Airport</p>
+            <div class="description" id="kayz">
+                <div class="description-inner">
+                    <p style="padding: 0 50px;">
+                        Zahn's Airport in North Amityville, NY, was built in
+                        1936 and closed in 1980. It had two runways, and was,
+                        in its prime, one of the busiest general aviation
+                        airports on the east coast.
+                    </p>
+                </div>
+            </div>
+            <p class="updating" onclick="showHideId('kjpx')">KJPX - Town of East Hampton</p>
+            <div class="description" id="kjpx">
+                <div class="description-inner">
+                    <img src="assets/digital/kjpx.jpg" width="150" height="100">
+                    <p>
+                        The Town of East Hampton Airport in East Hampton, NY,
+                        serves as the main hub of general aviation traffic into
+                        the Hamptons. It sees a large number of helicopter and
+                        charter operations, with the occasional Gulfstream.
+                        <a href="https://flightsim.to/file/75357/kjpx-town-of-east-hampton" target="_blank">Download Here</a>
+                    </p>
+                </div>
+            </div>
+            <p class="released" onclick="showHideId('khwv')">KHWV - Brookhaven Calabro Airport</p>
+            <div class="description" id="khwv">
+                <div class="description-inner">
+                    <img src="assets/digital/khwv.jpg" width="150" height="100">
+                    <p>
+                        Brookhaven Calabro Airport in Shirley, NY, has two
+                        runways and is home to large number of general
+                        aviation aircraft.
+                        <a href="https://flightsim.to/file/64914/khwv-brookhaven" target="_blank">Download Here</a>
+                    </p>
+                </div>
+            </div>
+            <p class="released" onclick="showHideId('ny03')">NY03 - Klenawicus Airfield</p>
+            <div class="description" id="ny03">
+                <div class="description-inner">
+                    <img src="assets/digital/ny03.jpg" width="150" height="100">
+                    <p>
+                        Klenawicus Airfield is a small grass strip located in
+                        Shelter Island, NY, between the north and south forks
+                        of Long Island.
+                        <a href="https://flightsim.to/file/84613/ny3-klenawicus" target="_blank">Download Here</a>
+                    </p>
+
+                </div>
+            </div>
+            <p class="released" onclick="showHideId('kjra')">KJRA - West 30th Street Heliport</p>
+            <div class="description" id="kjra">
+                <div class="description-inner">
+                    <img src="assets/digital/kjra.jpg" width="150" height="100">
+                    <p>
+                        The West 30th Street Heliport is located on the west
+                        side of Manhattan, NY, along the Hudson River.
+                        <a href="https://flightsim.to/file/75354/kjra-west-30th-street-heliport" target="_blank">Download Here</a>
+                    </p>
+                </div>
+            </div>
+            <p class="released" onclick="showHideId('21n')">21N - Mattituck Airport</p>
+            <div class="description" id="21n">
+                <div class="description-inner">
+                    <img src="assets/digital/21n.jpg" width="150" height="100">
+                    <p>
+                        Mattituck Airport, in Mattituck, NY was home to a
+                        long-established engine shop that closed in 2012.
+                        <a href="https://flightsim.to/file/64076/21n-mattituck" target="_blank">Download Here</a>
+                    </p>
+                </div>
+            </div>
+            <p class="released" onclick="showHideId('7b2')">7B2 - Northampton Airport</p>
+            <div class="description" id="7b2">
+                <div class="description-inner">
+                    <img src="assets/digital/7b2.jpg" width="150" height="100">
+                    <p>
+                        Northampton Airport, in Northampton, MA, is a small,
+                        single-runway airstrip located next to the Connecticut
+                        River.
+                        <a href="https://flightsim.to/file/63488/7b2-northampton" target="_blank">Download Here</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <h4>Liveries</h4>
+        <div class="asset-list">
+            <p class="released" onclick="showHideId('n67ad')">Cessna 182 - N67AD</p>
+            <div class="description" id="n67ad">
+                <div class="description-inner">
+                    <img src="assets/digital/n67ad.jpg" width="150" height="100">
+                    <p>
+                        N67AD is a 1976 Cessna 182P. This livery recreates a
+                        previous blue paintscheme.
+                        <a href="https://flightsim.to/file/60007/carenado-c182t-n67ad" target="_blank">Download Here</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <h1>Digital Combat Simulator</h1>
+
+        <div class="horizontal-content">
+            <h2>Current Projects</h2>
+            <h4><a href="https://www.digitalcombatsimulator.com/en/files/filter/user-is-scout_raptor/apply/" target="_blank">DCS User Files</a></h4>
+        </div>
+
+        <h4>Liveries</h4>
+        <div class="asset-list">
+            <p class="released" onclick="showHideId('dcs1')">OH-58D - 2/17 Cavalry B Trp. "Banshee" 95-008</p>
+            <div class="description" id="dcs1">
+                <div class="description-inner">
+                    <img src="assets/digital/dcs1.jpg" width="150" height="100">
+                    <p>
+                         Tail No. 95-008 from 2/17 Cavalry under the 101st
+                         Combat Aviation Brigade. The aircraft is currently
+                         on display at Ft. Campbell, KY.
+                         <a href="https://www.digitalcombatsimulator.com/en/files/3338449/" target="_blank">Download Here</a>
+                    </p>
+                </div>
+            </div>
+            <p class="released" onclick="showHideId('dcs2')">AH-64D - 6-6 Cavalry C Trp. "Outcasts" 97053 "Low Level Hell"</p>
+            <div class="description" id="dcs2">
+                <div class="description-inner">
+                    <img src="assets/digital/dcs2.jpg" width="150" height="100">
+                    <p>
+                        Tail No. 97053 from 6th Squadron, 6th Cavalry Regiment
+                        <a href="https://www.digitalcombatsimulator.com/en/files/3330926/" target="_blank">Download Here</a>
+                    </p>
+                </div>
+            </div>
+            <p class="released" onclick="showHideId('dcs3')">AH-64D - 2-17 Cavalry A Trp. "Annihilator"</p>
+            <div class="description" id="dcs3">
+                <div class="description-inner">
+                    <img src="assets/digital/dcs3.jpg" width="150" height="100">
+                    <p>
+                        Four skins from Alpha troop, 2nd Squadron, 17th Cavalry
+                        Regiment.
+                        <a href="https://www.digitalcombatsimulator.com/en/files/3329145/" target="_blank">Download Here</a>
+                    </p>
+                </div>
+            </div>
+            <p class="released" onclick="showHideId('dcs4')">AH-64D - 1-10 Aviation TF "Tigershark" 26290</p>
+            <div class="description" id="dcs4">
+                <div class="description-inner">
+                    <img src="assets/digital/dcs4.jpg" width="150" height="100">
+                    <p>
+                        Tail No. 26290 from 1st Battalion, 10th Aviation
+                        Regiment.
+                        <a href="https://www.digitalcombatsimulator.com/en/files/3329075/" target="_blank">Download Here</a>
+                    </p>
+                </div>
+            </div>
+            <p class="released" onclick="showHideId('dcs5')">AH-64D - 1-101 Aviation C Co. "Paladins"</p>
+            <div class="description" id="dcs5">
+                <div class="description-inner">
+                    <img src="assets/digital/dcs5.jpg" width="150" height="100">
+                    <p>
+                        Two skins from Charlie company, 1st Battalion, 101st
+                        Aviation Regiment.
+                        <a href="https://www.digitalcombatsimulator.com/en/files/3328363/" target="_blank">Download Here</a>
+                    </p>
+                </div>
+            </div>
+            <p class="released" onclick="showHideId('dcs6')">AH-64D - 1-101 Aviation B Co. "Bearcats"</p>
+            <div class="description" id="dcs6">
+                <div class="description-inner">
+                    <img src="assets/digital/dcs6.jpg" width="150" height="100">
+                    <p>
+                        Two skins from Bravo company, 1st Battalion, 101st
+                        Aviation Regiment.
+                        <a href="https://www.digitalcombatsimulator.com/en/files/3328362/" target="_blank">Download Here</a>
+                    </p>
+                </div>
+            </div>
+            <p class="released" onclick="showHideId('dcs7')">UH-60L - 5-101 Aviation C Co. "Phantoms"</p>
+            <div class="description" id="dcs7">
+                <div class="description-inner">
+                    <img src="assets/digital/dcs7.jpg" width="150" height="100">
+                    <p>
+                        Liveries from 8 UH-60s in C Company, 5th Battalion,
+                        101st Aviation Regiment, 101st Combat Aviation Brigade.
+                        <a href="https://www.digitalcombatsimulator.com/en/files/3326588/" target="_blank">Download Here</a>
+                    </p>
+                </div>
+            </div>
+            <p class="released" onclick="showHideId('dcs8')">UH-60L - 5-101 Aviation A Co. "Phoenix"</p>
+            <div class="description" id="dcs8">
+                <div class="description-inner">
+                    <img src="assets/digital/dcs8.jpg" width="150" height="100">
+                    <p>
+                        Liveries from 8 UH-60s in A Company, 5th Battalion,
+                        101st Aviation Regiment, 101st Combat Aviation Brigade.
+                        <a href="https://www.digitalcombatsimulator.com/en/files/3326587/" target="_blank">Download Here</a>
+                    </p>
+                </div>
+            </div>
+            <p class="released" onclick="showHideId('dcs9')">AI OH-58D - 2-17 Cavalry B Trp. "Banshee" & C  Trp. "Outcasts"</p>
+            <div class="description" id="dcs9">
+                <div class="description-inner">
+                    <img src="assets/digital/dcs9.jpg" width="150" height="100">
+                    <p>
+                        Two liveries each from Bravo "Banshee" Troop and
+                        Charlie "Condor" Troop, 2nd Squadron, 17th Cavalry,
+                        101st Combat Aviation Brigade.
+                        <a href="https://www.digitalcombatsimulator.com/en/files/3326670/" target="_blank">Download Here</a>
+                    </p>
+                </div>
+            </div>
+            <p class="released" onclick="showHideId('dcs10')">AI OH-58D - National Liveries</p>
+            <div class="description" id="dcs10">
+                <div class="description-inner">
+                    <img src="assets/digital/dcs10.jpg" width="150" height="100">
+                    <p>
+                        Livery pack for the default AI-only OH-58D in DCS,
+                        including liveries from Croatia, Tunisia, Taiwan,
+                        Greece, and the US.
+                        <a href="https://www.digitalcombatsimulator.com/en/files/3325898/" target="_blank">Download Here</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <hr>
+        <p>
+            This page is under construction.
+            <br>
+            Hosted on GitHub Pages -
+            Powered by HTML and curiosity
+        </p>        
     </div>
 </body>
 

@@ -23,13 +23,31 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-// Add shadow to navbar when you scroll down
+// Add shadow to navbar and context when you scroll down
 window.addEventListener('scroll', ()=>{
     const nav = document.getElementById('navbar');
+    const context = document.getElementsByClassName('context')[0];
 
-    if(window.scrollY > 0){
+    if (window.scrollY > 0){
         nav.classList.add("navbar-shadow");
+        if (context != null) {
+            context.classList.add("context-shadow");
+        }
     } else {
         nav.classList.remove("navbar-shadow");
+        if (context != null) {
+            context.classList.remove("context-shadow");
+        }
     }
 });
+
+function showHideId(id) {
+    let element = document.getElementById(id);
+    console.log(element.style.gridTemplateRows);
+
+    if (element.style.gridTemplateRows === "1fr") {
+        element.style.gridTemplateRows = "0fr";
+    } else {
+        element.style.gridTemplateRows = "1fr";
+    }
+}
