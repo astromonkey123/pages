@@ -94,9 +94,16 @@
 }
 
 .asset-info a {
+  color: #60a5fa;
   opacity: 0;
   text-align: center;
   transition: opacity 0.4s ease-out;
+  transition: text-shadow 0.4s ease;
+}
+
+.asset-info a:hover {
+  color: #93c5fd;
+  text-shadow: 0 5px 5px rgba(147,197,253,0.5);
 }
 
 .asset-info-expanded {
