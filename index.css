@@ -4,12 +4,13 @@ body {
 }
 
 #page-body {
-  padding-left: 100px;
+  padding-left: 50px;
   opacity: 0;
-  transition: all 0.75s ease-out;
+  transition: all 0.5s ease-out;
 }
 
 .navbar {
+  z-index: 100;
   background-color: rgba(55, 65, 81, 0.5);
   backdrop-filter: blur(5px);
   position: fixed;
@@ -20,18 +21,6 @@ body {
 
 .navbar-shadow {
   box-shadow: 0 0 10px 0 rgba(0,0,0,1);
-}
-
-.nav-button {
-  position: fixed;
-  right: 0;
-  top: 0;
-  margin: 10px;
-  height: 30px; width: 100px;
-  border-width: 0;
-  border-radius: 15px;
-  color: white;
-  background-color: rgb(39, 48, 67);
 }
 
 .center {
@@ -56,7 +45,7 @@ body {
   cursor: pointer;
 }
 
-.nav-item a{
+.nav-item a {
   color: white;
   text-decoration: none;
 }
@@ -83,20 +72,44 @@ body {
 }
 
 .context {
+  /* position: relative; */
+  z-index: 100;
   background-color: rgba(39, 48, 67, 0.5);
   backdrop-filter: blur(5px);
   position: fixed;
   width: 300px;
-  right: 25px;
+  right: -250px;
   top: 75px;
+  height: 50px;
   color: white;
   border-radius: 25px;
-  padding-top: 15px; padding-bottom: 15px;
+  padding-top: 5px; padding-bottom: 15px;
   transition-duration: 0.2s;
+  /* transition: height 0.6s ease; */
+  transition: all 0.6s ease;
+  overflow: hidden;
+}
+
+.context div {
+  opacity: 0;
+  transition: opacity 0.6s ease-out;
+}
+
+.context-expanded {
+  right: 25px;
+  height: 295px;
+}
+
+.context-expanded div {
+  opacity: 1;
 }
 
 .context-shadow {
   box-shadow: 5px 5px 5px 0 rgba(0,0,0,0.5);
+}
+
+.context-info {
+  padding: 0 25px;
 }
 
 .context p {
@@ -104,18 +117,23 @@ body {
 }
 
 .content {
-  max-width: 800px;
-  margin: 50px auto;
-  padding: 20px;
+  margin-left: 100px; margin-right: 100px;
+  margin-top: 100px; margin-bottom: 25px;
   color: white;
 }
 
-.content a {
+.content-small {
+  margin-left: 100px; margin-right: 100px;
+  margin-top: 50px; margin-bottom: 25px;
+  color: white;
+}
+
+a {
   color: #60a5fa;
   transition-duration: 0.4s;
 }
 
-.content a:hover {
+a:hover {
   color: #93c5fd;
   text-shadow: 0 5px 5px rgba(147,197,253,0.5);
 }
@@ -139,16 +157,84 @@ body {
   box-shadow: 5px 5px 5px 0 rgba(0,0,0,0.5);
 }
 
-.asset-list {
-  padding: 0 50px;
+.asset-grid {
+  position: relative;
+  margin: auto;
+  display: flow-root;
+  width: calc(90% - mod(90%, 310px));
+}
+
+.asset-card {
+  position: relative;
+  background-color: rgb(39, 48, 67);
+  box-shadow: 0px 5px 5px 0 rgba(0,0,0,0.5);
+  margin: 5px;
+  float: left;
+  height: 250px;
+  width: 300px;
+  border-radius: 20px;
+}
+
+.asset-card img {
+  bottom: 0;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.asset-info {
+  position: absolute;
+  bottom: 0;
+  height: 70px;
+  width: 100%;
+  background-color: rgb(39, 48, 67);
+  text-align: center;
+  color: white;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: height 0.4s ease-out;
+}
+
+.asset-info h4 {
+  margin-top: 15px;
+}
+
+.asset-info p {
+  opacity: 0;
+  color: white;
+  text-align: left;
+  padding: 0 20px;
+  font-size: 0.9em;
+  transition: opacity 0.4s ease-out;
+}
+
+.asset-info a {
+  opacity: 0;
+  text-align: center;
+  transition: opacity 0.4s ease-out;
+}
+
+.asset-info-expanded {
+  position: absolute;
+  bottom: 0;
+  height: 250px;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.asset-info-expanded p {
+  opacity: 1;
+}
+
+.asset-info-expanded a {
+  opacity: 1;
 }
 
 .in-progress {
-  color: #fbff24;
+  color: #fde68a;
   transition-duration: 0.4s;
 }
 
-.asset-list > .in-progress:hover {
+.asset-info > .in-progress:hover {
   font-size: 1.1em;
   text-shadow: 0 5px 5px rgba(251,255,36,0.5);
 }
@@ -158,7 +244,7 @@ body {
   transition-duration: 0.4s;
 }
 
-.asset-list > .updating:hover {
+.asset-info > .updating:hover {
   font-size: 1.1em;
   text-shadow: 0 5px 5px rgba(56,189,248,0.5);
 }
@@ -168,7 +254,7 @@ body {
   transition-duration: 0.4s;
 }
 
-.asset-list > .released:hover {
+.asset-info > .released:hover {
   font-size: 1.1em;
   text-shadow: 0 5px 5px rgba(16,185,129,0.5);
 }
@@ -214,6 +300,7 @@ button:hover {
 .footer {
   max-width: 800px;
   margin: 0 auto;
+  margin-top: 50px;
   text-align: center;
   font-size: 0.8em;
   color: white;

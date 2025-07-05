@@ -27,22 +27,35 @@ window.addEventListener("DOMContentLoaded", () => {
     pageBody.style.paddingLeft = 0;
 });
 
+let prevScrollY = window.scrollY;
+
 // Add shadow to navbar and context when you scroll down
+// Also expand the info section on return to 0 and contract when leaving 0
 window.addEventListener('scroll', ()=>{
     const nav = document.getElementById('navbar');
     const context = document.getElementsByClassName('context')[0];
 
-    if (window.scrollY > 0){
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY > 0){
         nav.classList.add("navbar-shadow");
         if (context != null) {
             context.classList.add("context-shadow");
+            if (prevScrollY === 0) {
+                context.classList.remove("context-expanded");
+            }
         }
     } else {
         nav.classList.remove("navbar-shadow");
         if (context != null) {
             context.classList.remove("context-shadow");
+            if (prevScrollY > 0) {
+                context.classList.add("context-expanded");
+            }
         }
     }
+
+    prevScrollY = currentScrollY
 });
 
 function showHideId(id) {
@@ -53,4 +66,16 @@ function showHideId(id) {
     } else {
         element.style.gridTemplateRows = "1fr";
     }
+}
+
+function showHideInfoId(id) {
+    const element = document.getElementById(id);
+
+    element.classList.toggle("asset-info-expanded");
+}
+
+function showHideContext(id) {
+    const element = document.getElementById(id)
+
+    element.classList.toggle("context-expanded");
 }
