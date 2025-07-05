@@ -21,6 +21,10 @@ window.addEventListener("DOMContentLoaded", () => {
         underline.style.left = left + "px";
         underline.style.width = width + "px";
     }
+
+    const pageBody = document.getElementById("page-body");
+    pageBody.style.opacity = 1;
+    pageBody.style.paddingLeft = 0;
 });
 
 // Add shadow to navbar and context when you scroll down
@@ -43,7 +47,6 @@ window.addEventListener('scroll', ()=>{
 
 function showHideId(id) {
     let element = document.getElementById(id);
-    console.log(element.style.gridTemplateRows);
 
     if (element.style.gridTemplateRows === "1fr") {
         element.style.gridTemplateRows = "0fr";
