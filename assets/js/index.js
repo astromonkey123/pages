@@ -109,7 +109,7 @@ function showViewer(id, filename) {
     viewer.style.transitionDuration = 0.2 + "s";
     viewer.style.opacity = 0;
     setTimeout(() => {
-        viewer.data = "../assets/docs/" + filename;
+        viewer.data = "../assets/media/docs/" + filename;
     }, 200);
     setTimeout(() => {
         viewer.style.opacity = 1;
