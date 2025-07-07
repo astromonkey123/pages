@@ -1,0 +1,150 @@
+.pdf-viewer {
+  position: fixed;
+  z-index: 100;
+  background-color: rgba(39, 48, 67, 0.5);
+  backdrop-filter: blur(10px);
+  width: 600px;
+  height: 500px;
+  right: 25px;
+  top: 75px;
+  border-radius: 25px;
+  opacity: 1;
+  overflow: hidden;
+}
+
+.pdf-viewer-shadow {
+  box-shadow: 5px 5px 5px 0 rgba(0,0,0,0.5);
+}
+
+.pdf-viewer-hide {
+  opacity: 0;
+  height: 0;
+}
+
+.pdf-viewer object {
+  /* margin-top: 50px; */
+  width: 100%;
+  height: calc(100% - 50px);
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+.centering-viewer {
+  margin: auto;
+  width: 150px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
+.drag-bar {
+  background-color: white;
+  width: 100px;
+  height: 4px;
+  border-radius: 2px;
+}
+
+.pdf-viewer img {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(264deg) brightness(106%) contrast(101%);
+}
+
+.doc-grid {
+  position: relative;
+  margin: auto;
+  display: flow-root;
+  width: calc(90% - mod(90%, 310px));
+}
+
+.doc-card {
+  position: relative;
+  background-color: rgb(39, 48, 67);
+  box-shadow: 0px 5px 5px 0 rgba(0,0,0,0.5);
+  margin: 5px;
+  float: left;
+  height: 50px;
+  width: 300px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.doc-card h4 {
+  color: white;
+  margin-left: 15px;
+}
+
+.doc-card img {
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(264deg) brightness(106%) contrast(101%);
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  transition: right 0.4s ease;
+}
+
+.doc-card img:hover {
+  right: 10px;
+}
+
+.asset-info {
+  position: absolute;
+  top: 0;
+  height: 70px;
+  width: 100%;
+  /* background-color: rgb(39, 48, 67); */
+  background-color: black;
+  text-align: center;
+  color: white;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: height 0.4s ease-out;
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+}
+
+.asset-info p {
+  opacity: 0;
+  color: white;
+  text-align: left;
+  padding: 0 20px;
+  font-size: 0.9em;
+  transition: opacity 0.4s ease-out;
+}
+
+.asset-info a {
+  color: #60a5fa;
+  opacity: 0;
+  text-align: center;
+  transition: opacity 0.4s ease-out;
+  transition: text-shadow 0.4s ease;
+}
+
+.asset-info a:hover {
+  color: #93c5fd;
+  text-shadow: 0 5px 5px rgba(147,197,253,0.5);
+}
+
+.description {
+  width: 75%;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s ease-out;
+}
+
+.description-inner {
+  overflow: hidden;
+  display: flex;
+}
+
+.description-inner p {
+  margin-top: 0;
+  padding: 0 10px;
+}
+
+.description-inner img {
+  border-radius: 20px;
+}
