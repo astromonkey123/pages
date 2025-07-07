@@ -25,10 +25,10 @@ body {
 
 .center {
   position: relative;
-  width: 65%;
+  width: 60%;
   margin: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .nav-item {

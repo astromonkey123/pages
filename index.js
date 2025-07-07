@@ -36,6 +36,7 @@ let prevScrollY = window.scrollY;
 // Also expand the info section on return to 0 and contract when leaving 0
 window.addEventListener('scroll', ()=>{
     const nav = document.getElementById('navbar');
+    const mini_nav = document.getElementById('mini-navbar');
     const context = document.getElementsByClassName('context')[0];
     const pdf_viewer = document.getElementById("pdv");
 
@@ -52,6 +53,9 @@ window.addEventListener('scroll', ()=>{
         if (pdf_viewer != null) {
             pdf_viewer.classList.add("pdf-viewer-shadow");
         }
+        if (mini_nav != null) {
+            mini_nav.classList.add("mini-navbar-shadow");
+        }
     } else {
         nav.classList.remove("navbar-shadow");
         if (context != null) {
@@ -62,6 +66,9 @@ window.addEventListener('scroll', ()=>{
         }
         if (pdf_viewer != null) {
             pdf_viewer.classList.remove("pdf-viewer-shadow");
+        }
+        if (mini_nav != null) {
+            mini_nav.classList.remove("mini-navbar-shadow");
         }
     }
 
@@ -133,7 +140,7 @@ function dragElement(id) {
         x = windowWidth - mouse.clientX;
         y = mouse.clientY;
         x = (x < 300) ? 300 : (x > windowWidth - 300) ? windowWidth - 300 : x;
-        y = (y < 25) ? 25 : (y > windowHeight - 500 + 25) ? windowHeight - 500 + 25 : y;
+        y = (y < 75) ? 75 : (y > windowHeight - 500 + 25) ? windowHeight - 500 + 25 : y;
 
         if (! mouseUp && element != null) {
             console.log(`${x}, ${y}`);
