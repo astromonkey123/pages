@@ -70,6 +70,18 @@ body {
   text-align: center;
 }
 
+.banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 20vw;
+  margin: 0;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,1);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
 .content {
   margin-left: 100px;
   margin-right: 100px;
