@@ -84,6 +84,17 @@ function simulate_step(circuit) {
     circuit.integral_Idt = integral_Idt;
     circuit.dIdt = dIdt;
 
+    for (let element of circuit.elements) {
+        if (element.type == 'resistor') {
+            element.delta_V = circuit.I * element.resistance;
+        } else if (element.type == 'capacitor') {
+            element.stored_charge += circuit.I * dt;
+            element.delta_V = element.stored_charge / element.capacitance;
+        } else if (element.type == 'inductor') {
+            element.delta_V = circuit.dIdt * element.inductance;
+        }
+    }
+
     // console.log(`Integral: ${integral_Idt}`);
     // console.log(`Current: ${I}`);
     // console.log(`Derivative: ${dIdt}`);
@@ -110,7 +121,7 @@ function circuit_solver(circuit, I_previous, integral_Idt, dt) {
 
         } else if (element.type == 'capacitor') {
             // Capacitor -> dV is proportional to the charge stored: ΔV = ∫ I dt / C
-            ΔV_total.push( (I, integral_Idt, dIdt) => -((integral_Idt + element.initial_charge) / element.capacitance) );
+            ΔV_total.push( (I, integral_Idt, dIdt) => -(((I * dt) + element.stored_charge) / element.capacitance) );
 
         } else if (element.type == 'inductor') {
             // Inductor -> dV is proportional to the derivative of current by Faraday's Law: ΔV = L * dIdt

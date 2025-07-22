@@ -17,7 +17,7 @@ export class Element {
     }
 
     contains(x, y) {
-        return Math.hypot(x - this.x, y - this.y) < 50;
+        return Math.hypot(x - this.x, y - this.y) < 20;
     }
 
     move(x, y) {
@@ -45,6 +45,7 @@ export class Element {
         ctx.translate(-this.width/2, 0);
         ctx.fillStyle = 'white';
         ctx.strokeStyle = 'white';
+        ctx.font = "12px serif";
         if (this.type == 'wire') {
             ctx.beginPath();
             ctx.moveTo(this.connection1.x - this.x + this.width/2, this.connection1.y - this.y);
@@ -67,6 +68,7 @@ export class Element {
             ctx.moveTo(0.5 * this.width + 5, -10);
             ctx.lineTo(0.5 * this.width + 5, 10);
             ctx.stroke();
+            ctx.fillText(this.emf.toFixed(2) + "V", this.width/2, 20);
         } else if (this.type == 'resistor') {
             const spacing = this.width/11;
             ctx.beginPath();
@@ -82,6 +84,8 @@ export class Element {
             ctx.lineTo(9.5 * spacing, 0);
             ctx.lineTo(11 * spacing, 0);
             ctx.stroke();
+            ctx.fillText(this.delta_V.toFixed(2) + "V", this.width/2, 20);
+            ctx.fillText(this.resistance.toFixed(2) + "Ω", this.width/2, 32);
         } else if (this.type == 'capacitor') {
             ctx.beginPath();
             ctx.moveTo(0, 0);
@@ -99,6 +103,13 @@ export class Element {
             ctx.moveTo(0.5 * this.width + 5, -10);
             ctx.lineTo(0.5 * this.width + 5, 10);
             ctx.stroke();
+            ctx.fillText(this.delta_V.toFixed(2) + "V", this.width/2, 20);
+            if (this.capacitance < 0.1) {
+                ctx.fillText((this.capacitance*1000).toFixed(2) + "µF", this.width/2, 32);
+            } else {
+                ctx.fillText(this.capacitance.toFixed(2) + "F", this.width/2, 32);
+            }
+            ctx.fillText(this.stored_charge.toFixed(2) + "C", this.width/2, 44);
         } else if (this.type == 'inductor') {
             const spacing = this.width/11;
             ctx.beginPath();
@@ -114,6 +125,8 @@ export class Element {
             }
             ctx.lineTo(this.width, 0);
             ctx.stroke();
+            ctx.fillText(this.delta_V.toFixed(2) + "V", this.width/2, 20);
+            ctx.fillText(this.inductance.toFixed(2) + "H", this.width/2, 32);
         }
         ctx.restore();
     }
@@ -136,14 +149,16 @@ export class Resistor extends Element {
   constructor(x, y, resistance) {
     super(x, y, 'resistor');
     this.resistance = resistance;
+    this.delta_V = 0;
   }
 }
 
 export class Capacitor extends Element {
-  constructor(x, y, capacitance, initial_charge) {
+  constructor(x, y, capacitance, stored_charge) {
     super(x, y, 'capacitor');
     this.capacitance = capacitance;
-    this.initial_charge = initial_charge;
+    this.stored_charge = stored_charge;
+    this.delta_V = 0;
   }
 }
 
@@ -151,5 +166,6 @@ export class Inductor extends Element {
   constructor(x, y, inductance) {
     super(x, y, 'inductor');
     this.inductance = inductance;
+    this.delta_V = 0;
   }
 }
