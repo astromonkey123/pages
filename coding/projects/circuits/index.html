@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Circuit Simulator</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/index.js" defer></script>
+    <script type="module" src="js/canvas.js" defer></script>
+</head>
+
+<body>
+    <canvas class="graph" id="graph" width="880" height="130"></canvas>
+
+    <div class="container">
+        <h3 id="current">Current:</h3>
+        <h3 id="current"></h3>
+        <h3 id="integral">Integral:</h3>
+        <h3 id="derivative">Derivative:</h3>
+        <h3 id="time">Time:</h3>
+    </div>
+
+    <canvas class="canvas" id="canvas" width="670" height="400"></canvas>
+
+    <div class="button-grid">
+        <div class="button button-left" id="addBattery">
+            <h3>Battery</h3>
+        </div>
+        <div class="button button-left" id="addResistor">
+            <h3>Resistor</h3>
+        </div>
+        <div class="button button-left" id="addCapacitor">
+            <h3>Capacitor</h3>
+        </div>
+        <div class="button button-left" id="addInductor">
+            <h3>Inductor</h3>
+        </div>
+        <div class="button button-left" id="addWire">
+            <h3>Wire</h3>
+        </div>
+        <div class="button button-right alert" id="clearCanvas">
+            <h3 id="clearText">Clear</h3>
+        </div>
+    </div>
+</body>
+
+</html>

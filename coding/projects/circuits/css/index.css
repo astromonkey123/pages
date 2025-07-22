@@ -1,0 +1,95 @@
+body {
+    position: relative;
+    width: 900px;
+    background-color: hsl(213, 16%, 24%);
+    margin: auto;
+}
+
+.graph {
+    position: absolute;
+    top: 10px; left: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: hsl(213, 16%, 29%);
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    width: 880px;
+    height: 130px;
+}
+
+.container {
+    position: absolute;
+    top: 150px; left: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: hsl(213, 16%, 29%);
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    width: 200px;
+    height: 460px;
+    padding-left: 20px;
+}
+
+.canvas {
+    position: absolute;
+    top: 150px; left: 220px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: hsl(213, 16%, 29%);
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    width: 670px;
+    height: 400px;
+}
+
+.button-grid{
+    position: absolute;
+    top: 560px; left: 220px;
+    box-sizing: border-box;
+    background-color: hsl(213, 16%, 29%);
+    width: 670px;
+    height: 50px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    padding: 6px
+}
+
+.button {
+    border-radius: 10px;
+    padding-left: 15px; padding-right: 15px;
+    height: 34px;
+    background-color: hsl(213, 16%, 39%);
+    color: black;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    justify-content: center;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    transition: box-shadow 0.4s ease;
+}
+
+.button-left {
+    float: left;
+    margin-right: 6px;
+}
+
+.button-right {
+    float: right;
+    margin-left: 6px;
+}
+
+.button:hover {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.alert {
+    color: white;
+    background-color: rgb(166, 90, 90);
+}
