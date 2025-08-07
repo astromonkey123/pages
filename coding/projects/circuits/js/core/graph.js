@@ -4,6 +4,7 @@ import { Battery, Wire, Resistor, Capacitor, Inductor } from '../components/Elem
 import { Link } from '../components/Link.js';
 
 import { simContainer, graphContainer, dt } from './app.js';
+import { formatValue } from '../utils/prefixes.js';
 
 function drawGraph() {
     const graph = graphContainer.canvas;
@@ -103,11 +104,7 @@ function plot(ctx, times, currents, max_width, i) {
     ctx.save();
     ctx.translate(max_width, getHeight( currents.at(-1) ));
     ctx.font = "14px serif";
-    if (Math.abs(currents.at(-1)) <= 0.1) {
-        ctx.fillText( (currents.at(-1) * 1000).toFixed(3) + "mA", 6, graph.height/2 + 5 );
-    } else {
-        ctx.fillText( currents.at(-1).toFixed(3) + "A", 6, graph.height/2 + 5 );
-    }
+    ctx.fillText(formatValue(currents.at(-1), "A", 3), 6, graph.height/2 + 5);
     ctx.restore();
 }
 
@@ -116,10 +113,8 @@ function formatCurrent(current) {
 
     if (current == Infinity) {
         display_text = "0A";
-    } else if (current >= 1) {
-        display_text = current + "A";
-    } else if (current >= 1e-3) {
-        display_text = (1000 * current) + "mA"
+    } else if (current <= 1e12 && current >= 1e-12) {
+        display_text = formatValue(current, "A", null);
     } else {
         const scaling = ( 1 / (graphContainer.height_scale *  (Math.pow(10, Math.floor( Math.log10( current ) ) ) ) ) ).toFixed(3)
         const exponential = Math.floor( Math.log10( current ) );

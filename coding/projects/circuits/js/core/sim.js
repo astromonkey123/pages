@@ -173,7 +173,7 @@ function step_sim(circuit) {
 
             delta_v_functions.push(current => -( other_derivatives + ( (current - circuit.current) / dt ) ) * element.inductance);
         } else if (element.type == 'capacitor') {
-            delta_v_functions.push(current => -(element.current_idt + (circuit.current * dt)) / element.capacitance);
+            delta_v_functions.push(current => -element.current_idt / element.capacitance);
         }
     }
 

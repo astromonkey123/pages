@@ -1,4 +1,5 @@
 import { Link } from './Link.js';
+import { formatValue } from '../utils/prefixes.js';
 
 class Element {
     constructor(x, y, type) {
@@ -35,6 +36,10 @@ class Element {
         this.link2.x = this.x + (Math.cos(this.rotation) * this.width/2);
         this.link2.y = this.y + (Math.sin(this.rotation) * this.width/2);
     }
+
+    draw(ctx, showData) {
+        throw new Error("Abstract method 'draw()' must be implemented by derived classes.");
+    }
 }
 
 class Battery extends Element {
@@ -43,7 +48,7 @@ class Battery extends Element {
         this.emf = emf;
     }
 
-    draw(ctx) {
+    draw(ctx, showData) {
         ctx.save();
         ctx.translate(this.x, this.y);
         ctx.rotate(this.rotation);
@@ -67,7 +72,9 @@ class Battery extends Element {
         ctx.moveTo(0.5 * this.width + 5, -10);
         ctx.lineTo(0.5 * this.width + 5, 10);
         ctx.stroke();
-        ctx.fillText(this.emf.toFixed(2) + "V", this.width/2, 20);
+        if (showData) {
+            ctx.fillText(formatValue(this.emf, "V", 1), this.width/2, 20);
+        }
         ctx.restore();
     }
 }
@@ -79,7 +86,7 @@ class Wire extends Element {
         this.link2.setPosition(x2, y2);
     }
 
-    draw(ctx) {
+    draw(ctx, showData) {
         ctx.save();
         ctx.translate(this.x, this.y);
         ctx.rotate(this.rotation);
@@ -102,7 +109,7 @@ class Resistor extends Element {
         this.current = 0;
     }
 
-    draw(ctx) {
+    draw(ctx, showData) {
         ctx.save();
         ctx.translate(this.x, this.y);
         ctx.rotate(this.rotation);
@@ -124,8 +131,10 @@ class Resistor extends Element {
         ctx.lineTo(9.5 * spacing, 0);
         ctx.lineTo(11 * spacing, 0);
         ctx.stroke();
-        ctx.fillText((this.current * this.resistance).toFixed(2) + "V", this.width/2, 20);
-        ctx.fillText(this.resistance.toFixed(2) + "Ω", this.width/2, 32);
+        if (showData) {
+            ctx.fillText(formatValue(this.current * this.resistance, "V", 1), this.width/2, 20);
+            ctx.fillText(formatValue(this.resistance, "Ω", 1), this.width/2, 32);
+        }
         ctx.restore();
     }
 }
@@ -137,7 +146,7 @@ class Capacitor extends Element {
         this.current_idt = initial_charge;
     }
 
-    draw(ctx) {
+    draw(ctx, showData) {
         ctx.save();
         ctx.translate(this.x, this.y);
         ctx.rotate(this.rotation);
@@ -161,13 +170,11 @@ class Capacitor extends Element {
         ctx.moveTo(0.5 * this.width + 5, -10);
         ctx.lineTo(0.5 * this.width + 5, 10);
         ctx.stroke();
-        ctx.fillText((this.current_idt / this.capacitance).toFixed(2) + "V", this.width/2, 20);
-        if (this.capacitance < 0.1) {
-            ctx.fillText((this.capacitance*1000).toFixed(2) + "µF", this.width/2, 32);
-        } else {
-            ctx.fillText(this.capacitance.toFixed(2) + "F", this.width/2, 32);
+        if (showData) {
+            ctx.fillText(formatValue(this.current_idt / this.capacitance, "V", 1), this.width/2, 20);
+            ctx.fillText(formatValue(this.capacitance, "F", 1), this.width/2, 32);
+            ctx.fillText(formatValue(this.current_idt, "C", 1), this.width/2, 44);
         }
-        ctx.fillText(this.current_idt.toFixed(2) + "C", this.width/2, 44);
         ctx.restore();
     }
 }
@@ -179,7 +186,7 @@ class Inductor extends Element {
         this.current_ddt = 0;
     }
 
-    draw(ctx) {
+    draw(ctx, showData) {
         ctx.save();
         ctx.translate(this.x, this.y);
         ctx.rotate(this.rotation);
@@ -201,8 +208,10 @@ class Inductor extends Element {
         }
         ctx.lineTo(this.width, 0);
         ctx.stroke();
-        ctx.fillText((this.current_ddt * this.inductance).toFixed(2) + "V", this.width/2, 20);
-        ctx.fillText(this.inductance.toFixed(2) + "H", this.width/2, 32);
+        if (showData) {
+            ctx.fillText(formatValue(this.current_ddt * this.inductance, "V", 1), this.width/2, 20);
+            ctx.fillText(formatValue(this.inductance, "H", 1), this.width/2, 32);
+        }
         ctx.restore();
     }
 }

@@ -30,6 +30,11 @@ body {
     width: 200px;
     height: 460px;
     padding-left: 20px;
+    padding-right: 20px;
+}
+
+.container.h3 {
+    font-size: 14px;
 }
 
 .canvas {
@@ -62,7 +67,7 @@ body {
 
 .sliding-cover {
     position: absolute;
-    width: 85%;
+    width: 87%;
     top: 0; left: 0;
     padding-top: 6px;
     height: 50px;
@@ -77,6 +82,7 @@ body {
 }
 
 .button {
+    font-size: 14px;
     border-radius: 10px;
     padding-left: 15px; padding-right: 15px;
     height: 34px;
@@ -102,6 +108,12 @@ body {
     right: 6px;
     float: right;
     margin-left: 6px;
+}
+
+.button-center {
+    margin: auto;
+    margin-top: 15px;
+    width: max-content;
 }
 
 .button:hover {

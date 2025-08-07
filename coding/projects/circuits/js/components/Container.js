@@ -14,6 +14,7 @@ class SimContainer extends Container {
         this.editing = null;
         this.dragging = null;
         this.offsets = {x: 0, y: 0, rotation: 0};
+        this.showData = true;
     }
 
     updateLinks() {
