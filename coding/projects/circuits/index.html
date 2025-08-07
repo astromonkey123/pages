@@ -6,7 +6,7 @@
     <title>Circuit Simulator</title>
     <link rel="stylesheet" href="css/index.css">
     <script src="js/index.js" defer></script>
-    <script type="module" src="js/canvas.js" defer></script>
+    <script type="module" src="js/core/app.js" defer></script>
 </head>
 
 <body>
@@ -23,20 +23,39 @@
     <canvas class="canvas" id="canvas" width="670" height="400"></canvas>
 
     <div class="button-grid">
-        <div class="button button-left" id="addBattery">
-            <h3>Battery</h3>
-        </div>
-        <div class="button button-left" id="addResistor">
-            <h3>Resistor</h3>
-        </div>
-        <div class="button button-left" id="addCapacitor">
-            <h3>Capacitor</h3>
-        </div>
-        <div class="button button-left" id="addInductor">
-            <h3>Inductor</h3>
-        </div>
-        <div class="button button-left" id="addWire">
-            <h3>Wire</h3>
+        <div class="sliding-cover" id="slider-cover">
+            <div class="sliding-insert" id="slider">
+                <div class="button button-left" id="addBattery">
+                    <h3>Battery</h3>
+                </div>
+                <div class="button button-left" id="addResistor">
+                    <h3>Resistor</h3>
+                </div>
+                <div class="button button-left" id="addCapacitor">
+                    <h3>Capacitor</h3>
+                </div>
+                <div class="button button-left" id="addInductor">
+                    <h3>Inductor</h3>
+                </div>
+                <div class="button button-left" id="addWire">
+                    <h3>Wire</h3>
+                </div>
+                <div class="button button-left" id="addSeries">
+                    <h3>Series Preset</h3>
+                </div>
+                <div class="button button-left" id="addParallel">
+                    <h3>Parallel Preset</h3>
+                </div>
+                <div class="button button-left" id="addRC">
+                    <h3>RC Preset</h3>
+                </div>
+                <div class="button button-left" id="addRL">
+                    <h3>RL Preset</h3>
+                </div>
+                <div class="button button-left" id="addRLC">
+                    <h3>RLC Preset</h3>
+                </div>
+            </div>
         </div>
         <div class="button button-right alert" id="clearCanvas">
             <h3 id="clearText">Clear</h3>
