@@ -1,6 +1,6 @@
 import { Circuit, CircuitData } from '../components/Circuit.js';
 import { SimContainer, GraphContainer } from '../components/Container.js';
-import { Battery, Wire, Resistor, Capacitor, Inductor } from '../components/Element.js';
+import { Battery, Wire, Resistor, Capacitor, Inductor, Switch } from '../components/Element.js';
 import { Link } from '../components/Link.js';
 
 import { simContainer, graphContainer, dt } from './app.js';
@@ -137,6 +137,10 @@ function find_loop(loop, current_node, iter) {
     if (iter > 10) { return null; } // Prevent recursion overflow
 
     if (current_node.links.length === 0) { return null; } // If there are no more links, there is no complete loop
+
+    if (current_node.parent.type == 'switch') {
+        if (!current_node.parent.state) { return null };
+    }
 
     // If the current node is linked to the first element's other connection
     if (current_node.links.includes(loop[0].link2)) {

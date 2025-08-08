@@ -4,12 +4,12 @@ class Link {
         this.y = y;
         this.parent = parent;
         this.sibling;
-        this.radius = 7;
+        this.radius = 6;
         this.links = [];
     }
 
     containsPoint(x, y) {
-        return Math.hypot(this.x - x, this.y - y) < this.radius;
+        return Math.hypot(this.x - x, this.y - y) < this.radius * 2;
     }
 
     setPosition(x, y) {

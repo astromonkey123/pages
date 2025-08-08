@@ -1,9 +1,9 @@
 import { Circuit, CircuitData } from '../components/Circuit.js';
-import { SimContainer, GraphContainer } from '../components/Container.js';
-import { Battery, Wire, Resistor, Capacitor, Inductor } from '../components/Element.js';
+import { SimContainer, GraphContainer, Selection } from '../components/Container.js';
+import { Battery, Wire, Resistor, Capacitor, Inductor, Switch } from '../components/Element.js';
 import { Link } from '../components/Link.js';
 
-import { addSeries, addParallel, addRC, addRL, addRLC } from '../utils/presets.js';
+import { addSeries, addParallel, addSeriesSwitch, addRC, addRL, addRLC } from '../utils/presets.js';
 import { formatValue } from '../utils/prefixes.js';
 import { drawGraph } from './graph.js';
 import { simulate_periodic } from './sim.js';
@@ -59,12 +59,22 @@ window.addEventListener('DOMContentLoaded', () => {
             canvas.height/2 - 100));
         simContainer.updateLinks();
     });
+    document.getElementById('addSwitch').addEventListener('click', () => {
+        simContainer.elements.push(new Switch(
+            canvas.width/2,
+            canvas.height/2));
+        simContainer.updateLinks();
+    });
     document.getElementById('addSeries').addEventListener('click', () => {
         addSeries(simContainer);
         simContainer.updateLinks();
     });
     document.getElementById('addParallel').addEventListener('click', () => {
         addParallel(simContainer);
+        simContainer.updateLinks();
+    });
+    document.getElementById('addSeriesSwitch').addEventListener('click', () => {
+        addSeriesSwitch(simContainer);
         simContainer.updateLinks();
     });
     document.getElementById('addRC').addEventListener('click', () => {
@@ -94,8 +104,7 @@ window.addEventListener('DOMContentLoaded', () => {
         } else if (clear_text.innerHTML === "Confirm?") {
             clear_text.innerHTML = "Clear"
             slider_cover.style.width = "87%";
-            clearCanvas();
-
+            simContainer.resetFields();
         }
     });
     document.getElementById('showData').addEventListener('click', () => {
@@ -116,12 +125,22 @@ canvas.addEventListener('mousedown', (e) => {
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
 
+    if (simContainer.selection.objects.length != 0 && simContainer.selection.containsPoint(mouseX, mouseY)) {
+        simContainer.dragging = simContainer.selection;
+        simContainer.offsets.x = mouseX - simContainer.dragging.x;
+        simContainer.offsets.y = mouseY - simContainer.dragging.y;
+        simContainer.offsets.rotation = 0;
+        return null;
+    }
+
     for (let element of simContainer.elements) {
         if (element.type == 'wire') {
             if (element.link1.containsPoint(mouseX, mouseY)) {
                 simContainer.dragging = element.link1;
+                return null;
             } else if (element.link2.containsPoint(mouseX, mouseY)) {
                 simContainer.dragging = element.link2;
+                return null;
             }
         } else {
             if (element.containsPoint(mouseX, mouseY)) {
@@ -129,8 +148,28 @@ canvas.addEventListener('mousedown', (e) => {
                 simContainer.offsets.x = mouseX - simContainer.dragging.x;
                 simContainer.offsets.y = mouseY - simContainer.dragging.y;
                 simContainer.offsets.rotation = Math.atan2(simContainer.offsets.x, simContainer.offsets.y) + simContainer.dragging.rotation;
+                return null;
             }
         }
+    }
+
+    if (simContainer.selection.objects.length == 0) {
+        simContainer.selection.isActive = true;
+        simContainer.selection.objects = [];
+        simContainer.selection.x = mouseX;
+        simContainer.selection.y = mouseY;
+        simContainer.selection.w = 0;
+        simContainer.selection.h = 0;
+        return null;
+    }
+
+    if (!simContainer.selection.containsPoint(mouseX, mouseY)) {
+        simContainer.selection.isActive = false;
+        simContainer.selection.objects = [];
+        simContainer.selection.x = 0;
+        simContainer.selection.y = 0;
+        simContainer.selection.w = 0;
+        simContainer.selection.h = 0;
     }
 });
 
@@ -140,37 +179,63 @@ canvas.addEventListener('dblclick', (e) => {
     const mouseY = e.clientY - rect.top;
 
     for (let element of simContainer.elements) {
-        if (element.type == 'wire') continue;
-
+        if (element.type == 'wire') { continue }
+        
         if (element.containsPoint(mouseX, mouseY)) {
-            if (element.type == 'capacitor') {
-                showInputBox(element, 1);
+            if (element.type == 'switch') {
+                element.state = !element.state;
             } else {
-                showInputBox(element, 2);
+                showInputBox(element);
             }
         }
     }
 });
 
 canvas.addEventListener('mousemove', (e) => {
-    if (!simContainer.dragging) return;
     const rect = canvas.getBoundingClientRect();
-    if (simContainer.dragging instanceof Link) {
-        simContainer.dragging.setPosition(e.clientX - rect.left, e.clientY - rect.top);
-    } else {
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+
+    if (simContainer.dragging instanceof Selection) {
+        simContainer.dragging.setPosition(mouseX - simContainer.offsets.x, mouseY - simContainer.offsets.y);
+    } else if (simContainer.dragging instanceof Link) {
+        simContainer.dragging.setPosition(mouseX, mouseY);
+    } else if (simContainer.dragging != null) {
         if (e.shiftKey) {
-            simContainer.offsets.x = e.clientX - rect.left - simContainer.dragging.x;
-            simContainer.offsets.y = e.clientY - rect.top - simContainer.dragging.y;
+            simContainer.offsets.x = mouseX - simContainer.dragging.x;
+            simContainer.offsets.y = mouseY - simContainer.dragging.y;
             simContainer.dragging.setRotation(-Math.atan2(simContainer.offsets.x, simContainer.offsets.y) +  simContainer.offsets.rotation);
         } else {
-            simContainer.dragging.setPosition(e.clientX - rect.left - simContainer.offsets.x, e.clientY - rect.top - simContainer.offsets.y);
+            simContainer.dragging.setPosition(mouseX - simContainer.offsets.x, mouseY - simContainer.offsets.y);
         }
     }
-    drawAll();
+
+    if (simContainer.selection.isActive) {
+        simContainer.selection.w = mouseX - simContainer.selection.x;
+        simContainer.selection.h = mouseY - simContainer.selection.y;
+    }
 });
 
 canvas.addEventListener('mouseup', () => {
     simContainer.dragging = null;
+    if (simContainer.selection.isActive) {
+        for (const element of simContainer.elements) {
+            if (element.type == 'wire') {
+                if (simContainer.selection.containsPoint(element.link1.x, element.link1.y)) {
+                    simContainer.selection.objects.push(element.link1);
+                }
+                if (simContainer.selection.containsPoint(element.link2.x, element.link2.y)) {
+                    simContainer.selection.objects.push(element.link2);
+                }
+            } else {
+                if (simContainer.selection.containsPoint(element.x, element.y)) {
+                    simContainer.selection.objects.push(element);
+                }
+            }
+        }
+        simContainer.selection.isActive = false;
+    }
+    console.log(simContainer.selection.objects);
 });
 
 accept_button.addEventListener('click', () => {
@@ -196,14 +261,14 @@ cancel_button.addEventListener('click', () => {
 });
 
 function appPeriodic() {
-    drawAll();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawObjects();
     simulate_periodic();
     display_info();
     drawGraph();
 }
 
-function drawAll() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+function drawObjects() {
     for (let element of simContainer.elements) {
         element.draw(ctx, simContainer.showData);
     }
@@ -211,10 +276,7 @@ function drawAll() {
         link.draw(ctx);
         link.findLinks(simContainer);
     }
-}
-
-function clearCanvas() {
-    simContainer.resetFields();
+    simContainer.selection.draw(ctx);
 }
 
 function display_info() {

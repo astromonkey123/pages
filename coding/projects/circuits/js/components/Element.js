@@ -216,4 +216,51 @@ class Inductor extends Element {
     }
 }
 
-export { Battery, Wire, Resistor, Capacitor, Inductor };
+class Switch extends Element {
+    constructor(x, y) {
+        super(x, y, 'switch');
+        this.state = false;
+    }
+
+    draw(ctx, showData) {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.rotation);
+        ctx.translate(-this.width/2, 0);
+        ctx.fillStyle = 'white';
+        ctx.strokeStyle = 'white';
+        ctx.font = "12px serif";
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo((1/4) * this.width, 0);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(this.width, 0);
+        ctx.lineTo((3/4) * this.width, 0);
+        ctx.stroke();
+        if (this.state) {
+            ctx.beginPath();
+            ctx.moveTo((3/4) * this.width, 0);
+            ctx.lineTo((1/4) * this.width, 0);
+            ctx.stroke();
+            ctx.fillStyle = 'blue';
+            ctx.strokeStyle = 'blue';
+        } else {
+            const switchX = ((3/4) * this.width) - ((2/4) * this.width * Math.cos(-0.5));
+            const switchY = (2/4) * this.width * Math.sin(-0.5);
+            ctx.beginPath();
+            ctx.moveTo((3/4) * this.width, 0);
+            ctx.lineTo(switchX, switchY);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.arc(switchX, switchY, 4, 0, Math.PI * 2)
+            ctx.fill();
+        }
+        ctx.beginPath();
+        ctx.arc((1/4) * this.width, 0, 4, 0, Math.PI * 2)
+        ctx.fill();
+        ctx.restore();
+    }
+}
+
+export { Battery, Wire, Resistor, Capacitor, Inductor, Switch };
