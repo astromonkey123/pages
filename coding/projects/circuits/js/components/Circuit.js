@@ -1,6 +1,7 @@
 class Circuit {
-    constructor(elements) {
+    constructor(elements, directions) {
         this.elements = elements;
+        this.directions = directions;
         this.current = 0;
         this.current_idt = 0;
         this.current_ddt = 0;

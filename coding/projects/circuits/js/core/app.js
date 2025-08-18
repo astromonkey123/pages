@@ -3,10 +3,10 @@ import { SimContainer, GraphContainer, Selection } from '../components/Container
 import { Battery, Wire, Resistor, Capacitor, Inductor, Switch } from '../components/Element.js';
 import { Link } from '../components/Link.js';
 
-import { addSeries, addParallel, addSeriesSwitch, addRC, addRL, addRLC } from '../utils/presets.js';
-import { formatValue } from '../utils/prefixes.js';
+import { addElement } from '../utils/elements.js';
+import { addPreset } from '../utils/presets.js';
 import { drawGraph } from './graph.js';
-import { simulate_periodic } from './sim.js';
+import { simulatePeriodic } from './sim.js';
 
 export const simContainer = new SimContainer('canvas');
 export const graphContainer = new GraphContainer('graph');
@@ -16,78 +16,56 @@ const canvas = simContainer.canvas;
 const ctx = simContainer.ctx;
 
 const input_box = document.getElementById('input-box');
-const input_type = document.getElementById('input-type');
-const input_field = document.getElementById('input-field');
+const input_entry1 = document.getElementById('input-entry-1');
+const input_entry2 = document.getElementById('input-entry-2');
+const input_type1 = document.getElementById('input-type-1');
+const input_type2 = document.getElementById('input-type-2');
+const input_field1 = document.getElementById('input-field-1');
+const input_field2 = document.getElementById('input-field-2');
+const input_unit1 = document.getElementById('input-unit-1');
+const input_unit2 = document.getElementById('input-unit-2');
 const accept_button = document.getElementById('accept');
 const cancel_button = document.getElementById('cancel');
 
 window.addEventListener('DOMContentLoaded', () => {
     document.getElementById('addBattery').addEventListener('click', () => {
-        simContainer.elements.push(new Battery(
-            canvas.width/2,
-            canvas.height/2 + 100,
-            1));
-        simContainer.updateLinks();
+        addElement(simContainer, 'battery');
     });
     document.getElementById('addResistor').addEventListener('click', () => {
-        simContainer.elements.push(new Resistor(
-            canvas.width/2,
-            canvas.height/2 + 50,
-            1));
-        simContainer.updateLinks();
+        addElement(simContainer, 'resistor');
     });
     document.getElementById('addCapacitor').addEventListener('click', () => {
-        simContainer.elements.push(new Capacitor(
-            canvas.width/2,
-            canvas.height/2,
-            0.001,
-            0));
-        simContainer.updateLinks();
+        addElement(simContainer, 'capacitor');
     });
     document.getElementById('addInductor').addEventListener('click', () => {
-        simContainer.elements.push(new Inductor(
-            canvas.width/2, 
-            canvas.height/2 - 50, 
-            1));
-        simContainer.updateLinks();
+        addElement(simContainer, 'inductor');
     });
     document.getElementById('addWire').addEventListener('click', () => {
-        simContainer.elements.push(new Wire(
-            canvas.width/2 - 50,
-            canvas.height/2 - 100,
-            canvas.width/2 + 50,
-            canvas.height/2 - 100));
-        simContainer.updateLinks();
+        addElement(simContainer, 'wire');
     });
     document.getElementById('addSwitch').addEventListener('click', () => {
-        simContainer.elements.push(new Switch(
-            canvas.width/2,
-            canvas.height/2));
-        simContainer.updateLinks();
+        addElement(simContainer, 'switch');
     });
     document.getElementById('addSeries').addEventListener('click', () => {
-        addSeries(simContainer);
-        simContainer.updateLinks();
+        addPreset(simContainer, 'series');
     });
     document.getElementById('addParallel').addEventListener('click', () => {
-        addParallel(simContainer);
-        simContainer.updateLinks();
+        addPreset(simContainer, 'parallel');
     });
     document.getElementById('addSeriesSwitch').addEventListener('click', () => {
-        addSeriesSwitch(simContainer);
-        simContainer.updateLinks();
+        addPreset(simContainer, 'switch');
     });
     document.getElementById('addRC').addEventListener('click', () => {
-        addRC(simContainer);
-        simContainer.updateLinks();
+        addPreset(simContainer, 'rc');
     });
     document.getElementById('addRL').addEventListener('click', () => {
-        addRL(simContainer);
-        simContainer.updateLinks();
+        addPreset(simContainer, 'rl');
+    });
+    document.getElementById('addLC').addEventListener('click', () => {
+        addPreset(simContainer, 'lc');
     });
     document.getElementById('addRLC').addEventListener('click', () => {
-        addRLC(simContainer);
-        simContainer.updateLinks();
+        addPreset(simContainer, 'rlc');
     });
     document.getElementById('clearCanvas').addEventListener('click', () => {
         const clear_text = document.getElementById('clearCanvasText');
@@ -116,6 +94,33 @@ window.addEventListener('DOMContentLoaded', () => {
         } else if (show_text.innerHTML === "Show Details") {
             show_text.innerHTML = "Hide Details"
             simContainer.showData = true;
+        }
+    });
+    document.getElementById('runSimulation').addEventListener('click', () => {
+        const run_text = document.getElementById('runSimulationText');
+
+        if (run_text.innerHTML === "Pause Simulation") {
+            run_text.innerHTML = "Play Simulation"
+            simContainer.isSimulating = false;
+        } else if (run_text.innerHTML === "Play Simulation") {
+            run_text.innerHTML = "Pause Simulation"
+            simContainer.isSimulating = true;
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key == 'b') {
+            addElement(simContainer, 'battery');
+        } else if (e.key == 'r') {
+            addElement(simContainer, 'resistor');
+        } else if (e.key == 'c') {
+            addElement(simContainer, 'capacitor');
+        } else if (e.key == 'l') {
+            addElement(simContainer, 'inductor');
+        } else if (e.key == 'w') {
+            addElement(simContainer, 'wire');
+        } else if (e.key == 's') {
+            addElement(simContainer, 'switch');
         }
     });
 });
@@ -235,35 +240,39 @@ canvas.addEventListener('mouseup', () => {
         }
         simContainer.selection.isActive = false;
     }
-    console.log(simContainer.selection.objects);
 });
 
 accept_button.addEventListener('click', () => {
     input_box.style.visibility = "hidden";
+    input_entry2.style.visibility = "hidden";
 
     if (simContainer.editing.type == 'battery') {
-        simContainer.editing.emf = parseFloat(input_field.value);
+        simContainer.editing.emf = parseFloat(input_field1.value);
 
     } else if (simContainer.editing.type == 'resistor') {
-        simContainer.editing.resistance = parseFloat(input_field.value);
+        simContainer.editing.resistance = parseFloat(input_field1.value);
 
     } else if (simContainer.editing.type == 'capacitor') {
-        simContainer.editing.capacitance = parseFloat(input_field.value);
+        simContainer.editing.capacitance = parseFloat(input_field1.value);
+        simContainer.editing.current_idt = parseFloat(input_field2.value)
 
     } else if (simContainer.editing.type == 'inductor') {
-        simContainer.editing.inductance = parseFloat(input_field.value);
+        simContainer.editing.inductance = parseFloat(input_field1.value);
 
     }
 });
 
 cancel_button.addEventListener('click', () => {
     input_box.style.visibility = "hidden";
+    input_entry2.style.visibility = "hidden";
 });
 
 function appPeriodic() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawObjects();
-    simulate_periodic();
+    if (simContainer.isSimulating) {
+        simulatePeriodic();
+    }
     display_info();
     drawGraph();
 }
@@ -295,20 +304,44 @@ function showInputBox(element) {
     simContainer.editing = element;
 
     if (element.type == 'battery') {
-        input_type.innerHTML = "Voltage";
-        input_field.value = element.emf;
+        input_type1.innerHTML = "Voltage";
+        input_field1.value = element.emf;
+        input_unit1.innerHTML = "V";
+
+        input_entry2.style.visibility = "hidden";
+
+        input_box.style.height = "100px";
 
     } else if (element.type == 'resistor') {
-        input_type.innerHTML = "Resistance";
-        input_field.value = element.resistance;
+        input_type1.innerHTML = "Resistance";
+        input_field1.value = element.resistance;
+        input_unit1.innerHTML = "Ω";
+
+        input_entry2.style.visibility = "hidden";
+
+        input_box.style.height = "100px";
 
     } else if (element.type == 'capacitor') {
-        input_type.innerHTML = "Capacitance";
-        input_field.value = element.capacitance;
+        input_type1.innerHTML = "Capacitance";
+        input_field1.value = element.capacitance;
+        input_unit1.innerHTML = "F";
+
+        input_type2.innerHTML = "Stored Charge";
+        input_field2.value = element.current_idt;
+        input_unit2.innerHTML = "C";
+
+        input_entry2.style.visibility = "visible";
+
+        input_box.style.height = "150px";
 
     } else if (element.type == 'inductor') {
-        input_type.innerHTML = "Inductance";
-        input_field.value = element.inductance;
+        input_type1.innerHTML = "Inductance";
+        input_field1.value = element.inductance;
+        input_unit1.innerHTML = "H";
+
+        input_entry2.style.visibility = "hidden";
+
+        input_box.style.height = "100px";
 
     }
 }

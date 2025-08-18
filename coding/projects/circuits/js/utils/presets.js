@@ -1,5 +1,25 @@
 import { Battery, Wire, Resistor, Capacitor, Inductor, Switch } from '../components/Element.js';
 
+function addPreset(simContainer, type) {
+    if (type == 'series') {
+        addSeries(simContainer);
+    } else if (type == 'parallel') {
+        addParallel(simContainer);
+    } else if (type == 'switch') {
+        addSeriesSwitch(simContainer);
+    } else if (type == 'rc') {
+        addRC(simContainer);
+    } else if (type == 'rl') {
+        addRL(simContainer);
+    } else if (type == 'lc') {
+        addLC(simContainer);
+    } else if (type == 'rlc') {
+        addRLC(simContainer);
+    }
+    simContainer.updateLinks();
+
+}
+
 function addSeries(simContainer) {
     simContainer.elements.push(new Battery(
         canvas.width/2,
@@ -189,6 +209,33 @@ function addRL(simContainer) {
         canvas.width/2 + 50,
         canvas.height/2 + 50
     ));
+    simContainer.updateLinks();
+}
+
+function addLC(simContainer) {
+    simContainer.elements.push(new Capacitor(
+        canvas.width/2,
+        canvas.height/2 + 50,
+        0.01,
+        0.1
+    ));
+    simContainer.elements.push(new Inductor(
+        canvas.width/2,
+        canvas.height/2 - 50,
+        0.5
+    ));
+    simContainer.elements.push(new Wire(
+        canvas.width/2 - 50,
+        canvas.height/2 - 50,
+        canvas.width/2 - 50,
+        canvas.height/2 + 50
+    ));
+    simContainer.elements.push(new Wire(
+        canvas.width/2 + 50,
+        canvas.height/2 - 50,
+        canvas.width/2 + 50,
+        canvas.height/2 + 50
+    ));
 }
 
 function addRLC(simContainer) {
@@ -239,4 +286,4 @@ function addRLC(simContainer) {
     ));
 }
 
-export { addSeries, addParallel, addSeriesSwitch, addRC, addRL, addRLC };
+export { addPreset };

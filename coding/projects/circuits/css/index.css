@@ -135,23 +135,30 @@ body {
     border-style: solid;
     border-color: black;
     border-width: 2px;
-    height: 100px;
+    height: 150px;
     width: 250px;
-    display: flex;
-    justify-content: center;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
 }
 
-.input-box-text {
-    width: 100%;
-    height: 50px;
+.input-box-entry {
+    width: 230px;
+    height: 30px;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    padding: 10px;
+    overflow: hidden;
 }
 
-.input-box-text input {
-    width: 100px;
+.input-box-entry > h3 {
+    width: 145px;
+    float: left;
+    font-size: 16px;
+}
+
+.input-box-entry > input {
+    width: 75px;
+    float: left;
     color-scheme: dark ;
     color: black;
     background-color: hsl(213, 16%, 29%);
@@ -162,19 +169,20 @@ body {
     display: border-box;
 }
 
-.adjacent-button-grid {
-    position: absolute;
-    width: 180px;
+.input-box-bottom {
     height: 50px;
-    bottom: 0;
+    width: 250px;
+    position: absolute;
+    bottom: 0px;
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-.adjacent-button {
+.input-button {
     position: relative;
     height: 34px;
+    width: 100px;
     padding-left: 10px; padding-right: 10px;
     background-color: hsl(213, 16%, 39%);
     display: flex;
@@ -189,6 +197,6 @@ body {
     transition: box-shadow 0.4s ease;
 }
 
-.adjacent-button:hover {
+.input-button:hover {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
 }

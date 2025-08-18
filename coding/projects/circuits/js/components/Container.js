@@ -16,6 +16,7 @@ class SimContainer extends Container {
         this.offsets = {x: 0, y: 0, rotation: 0};
         this.showData = true;
         this.selection = new Selection();
+        this.isSimulating = true;
     }
 
     updateLinks() {
@@ -47,7 +48,9 @@ class GraphContainer extends Container {
     }
 
     updateScale(limit) {
-        if (limit < this.height_increment) {
+        if (limit === 0) {
+            this.height_scale = 1;
+        } else if (limit < this.height_increment) {
             this.height_scale = 1 / ( Math.pow(2, Math.ceil( Math.log2( limit ) ) ) );
         } else {
             this.height_scale = 1 / ( Math.ceil( limit / this.height_increment ) * this.height_increment );

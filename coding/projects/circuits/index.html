@@ -16,6 +16,9 @@
         <div class="button button-center" id="showData">
             <h3 id="showDataText">Hide Details</h3>
         </div>
+        <div class="button button-center" id="runSimulation">
+            <h3 id="runSimulationText">Pause Simulation</h3>
+        </div>
         <h3 id="current">Current:</h3>
         <h3 id="integral">Integral:</h3>
         <h3 id="derivative">Derivative:</h3>
@@ -60,6 +63,9 @@
                 <div class="button button-left" id="addRL">
                     <h3>RL Preset</h3>
                 </div>
+                <div class="button button-left" id="addLC">
+                    <h3>LC Preset</h3>
+                </div>
                 <div class="button button-left" id="addRLC">
                     <h3>RLC Preset</h3>
                 </div>
@@ -71,16 +77,23 @@
     </div>
 
     <div class="input-box" id="input-box">
-        <div class="input-box-text">
-            <h3 id="input-type">Voltage</h3>
-            <input id="input-field" type="number" value="1" min="0">
+        <div class="input-box-entry" id="input-entry-1">
+            <h3 id="input-type-1">Title 1</h3>
+            <input id="input-field-1" type="number" value="1" min="0">
+            <h3 id="input-unit-1" style="width: 30px; text-align: center;">X</h3>
         </div>
 
-        <div class="adjacent-button-grid">
-            <div class="adjacent-button" id="accept">
+        <div class="input-box-entry" id="input-entry-2">
+            <h3 id="input-type-2">Title 2</h3>
+            <input id="input-field-2" type="number" value="1" min="0">
+            <h3 id="input-unit-2" style="width: 30px; text-align: center;">X</h3>
+        </div>
+
+        <div class="input-box-bottom">
+            <div class="input-button" id="accept">
                  <p>Accept</p>
             </div>
-            <div class="adjacent-button" id="cancel">
+            <div class="input-button" id="cancel">
                  <p>Cancel</p>
             </div>
         </div>
