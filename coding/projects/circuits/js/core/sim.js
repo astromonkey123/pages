@@ -50,7 +50,7 @@ function findLoop(loop, directions, current_node, iter) {
     }
 
     const next_node = current_node.links[0].sibling;
-    const next_direction = (next_node == next_node.parent.link1);
+    const next_direction = (next_node == next_node.parent.link2);
 
     const new_loop = [...loop, next_node.parent];
     const new_directions = [...directions, next_direction];
@@ -143,9 +143,17 @@ function simulateTimeStep() {
 function stepCircuit(circuit){
     let delta_v_functions = [];
 
-    for (let element of circuit.elements) {
+    for (let i = 0; i < circuit.elements.length; i++) {
+        const element = circuit.elements[i];
+        const direction = circuit.directions[i];
         if (element.type == 'battery') {
-            delta_v_functions.push(current => element.emf);
+            
+            if (direction) {
+                delta_v_functions.push(current => -element.emf);
+            } else {
+                delta_v_functions.push(current => element.emf);
+            }
+
         } else if (element.type == 'resistor') {
             let other_currents = 0;
 
@@ -153,6 +161,7 @@ function stepCircuit(circuit){
                 if (circuit == other_circuit) { continue }
                 other_currents += other_circuit.current;
             }
+
             delta_v_functions.push(current => -(other_currents + current) * element.resistance);
 
         } else if (element.type == 'inductor') {
@@ -162,9 +171,11 @@ function stepCircuit(circuit){
                 if (circuit == other_circuit) { continue }
                 other_derivatives += other_circuit.current_ddt;
             }
+
             delta_v_functions.push(current => -( other_derivatives + ( (current - circuit.current) / dt ) ) * element.inductance);
         
         } else if (element.type == 'capacitor') {
+
             delta_v_functions.push(current => -element.current_idt / element.capacitance);
     
         } else if (element.type == 'switch') {
@@ -181,6 +192,7 @@ function stepCircuit(circuit){
         }
         return total_delta_v;
     }
+
     const slope = (delta_v(1) - delta_v(0));
     const current = delta_v(0) / -slope;
 
