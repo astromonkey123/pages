@@ -8,10 +8,7 @@ import { simContainer, graphContainer, dt } from './app.js';
 function simulatePeriodic() {
     updateCircuits();
     updateMemberCircuits();
-
-    for (const circuit of simContainer.circuits) {
-        simulateTimeStep(circuit)
-    }
+    simulateTimeStep()
 
     for (const element of simContainer.elements) {
         stepElement(element);

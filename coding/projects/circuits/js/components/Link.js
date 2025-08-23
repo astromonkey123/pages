@@ -1,3 +1,5 @@
+import { rainbow, highlight, light, dark } from '../utils/colors.js';
+
 class Link {
     constructor(x, y, parent) {
         this.x = x;
@@ -33,11 +35,11 @@ class Link {
         ctx.save();
         ctx.translate(this.x, this.y);
         if (this.links.length > 0) {
-            ctx.fillStyle = 'blue';
-            ctx.strokeStyle = 'blue';
+            ctx.fillStyle = light;
+            ctx.strokeStyle = light;
         } else {
-            ctx.fillStyle = 'white';
-            ctx.strokeStyle = 'white';
+            ctx.fillStyle = highlight;
+            ctx.strokeStyle = highlight;
         }
         ctx.beginPath();
         ctx.arc(0, 0, this.radius, 0, Math.PI * 2)

@@ -1,5 +1,6 @@
 import { Link } from './Link.js';
 import { formatValue } from '../utils/prefixes.js';
+import { rainbow, highlight, light, dark } from '../utils/colors.js';
 
 class Element {
     constructor(x, y, type) {
@@ -53,8 +54,8 @@ class Battery extends Element {
         ctx.translate(this.x, this.y);
         ctx.rotate(this.rotation);
         ctx.translate(-this.width/2, 0);
-        ctx.fillStyle = 'white';
-        ctx.strokeStyle = 'white';
+        ctx.fillStyle = light;
+        ctx.strokeStyle = light;
         ctx.font = "12px serif";
         ctx.beginPath();
         ctx.moveTo(0, 0);
@@ -91,8 +92,8 @@ class Wire extends Element {
         ctx.translate(this.x, this.y);
         ctx.rotate(this.rotation);
         ctx.translate(-this.width/2, 0);
-        ctx.fillStyle = 'white';
-        ctx.strokeStyle = 'white';
+        ctx.fillStyle = light;
+        ctx.strokeStyle = light;
         ctx.font = "12px serif";
         ctx.beginPath();
         ctx.moveTo(this.link1.x - this.x + this.width/2, this.link1.y - this.y);
@@ -114,8 +115,8 @@ class Resistor extends Element {
         ctx.translate(this.x, this.y);
         ctx.rotate(this.rotation);
         ctx.translate(-this.width/2, 0);
-        ctx.fillStyle = 'white';
-        ctx.strokeStyle = 'white';
+        ctx.fillStyle = light;
+        ctx.strokeStyle = light;
         ctx.font = "12px serif";
         const spacing = this.width/11;
         ctx.beginPath();
@@ -151,8 +152,8 @@ class Capacitor extends Element {
         ctx.translate(this.x, this.y);
         ctx.rotate(this.rotation);
         ctx.translate(-this.width/2, 0);
-        ctx.fillStyle = 'white';
-        ctx.strokeStyle = 'white';
+        ctx.fillStyle = light;
+        ctx.strokeStyle = light;
         ctx.font = "12px serif";
         ctx.beginPath();
         ctx.moveTo(0, 0);
@@ -191,8 +192,8 @@ class Inductor extends Element {
         ctx.translate(this.x, this.y);
         ctx.rotate(this.rotation);
         ctx.translate(-this.width/2, 0);
-        ctx.fillStyle = 'white';
-        ctx.strokeStyle = 'white';
+        ctx.fillStyle = light;
+        ctx.strokeStyle = light;
         ctx.font = "12px serif";
         const spacing = this.width/11;
         ctx.beginPath();
@@ -227,8 +228,8 @@ class Switch extends Element {
         ctx.translate(this.x, this.y);
         ctx.rotate(this.rotation);
         ctx.translate(-this.width/2, 0);
-        ctx.fillStyle = 'white';
-        ctx.strokeStyle = 'white';
+        ctx.fillStyle = light;
+        ctx.strokeStyle = light;
         ctx.font = "12px serif";
         ctx.beginPath();
         ctx.moveTo(0, 0);
@@ -243,8 +244,8 @@ class Switch extends Element {
             ctx.moveTo((3/4) * this.width, 0);
             ctx.lineTo((1/4) * this.width, 0);
             ctx.stroke();
-            ctx.fillStyle = 'blue';
-            ctx.strokeStyle = 'blue';
+            ctx.fillStyle = dark;
+            ctx.strokeStyle = dark;
         } else {
             const switchX = ((3/4) * this.width) - ((2/4) * this.width * Math.cos(-0.5));
             const switchY = (2/4) * this.width * Math.sin(-0.5);

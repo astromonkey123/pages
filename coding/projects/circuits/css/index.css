@@ -1,7 +1,15 @@
+:root {
+    --background: rgb(44, 44, 58);
+    --panel: rgb(52, 54, 74);
+    --highlight: rgb(68, 74, 106);
+    --dark: rgb(22, 22, 29);
+    --light: rgb(179, 187, 223);
+}
+
 body {
     position: relative;
     width: 900px;
-    background-color: hsl(213, 16%, 24%);
+    background-color: var(--background);
     margin: auto;
 }
 
@@ -10,9 +18,9 @@ body {
     top: 10px; left: 10px;
     box-sizing: border-box;
     border-radius: 10px;
-    background-color: hsl(213, 16%, 29%);
+    background-color: var(--panel);
     border-style: solid;
-    border-color: black;
+    border-color: var(--dark);
     border-width: 2px;
     width: 880px;
     height: 130px;
@@ -23,9 +31,9 @@ body {
     top: 150px; left: 10px;
     box-sizing: border-box;
     border-radius: 10px;
-    background-color: hsl(213, 16%, 29%);
+    background-color: var(--panel);
     border-style: solid;
-    border-color: black;
+    border-color: var(--dark);
     border-width: 2px;
     width: 200px;
     height: 460px;
@@ -42,9 +50,9 @@ body {
     top: 150px; left: 220px;
     box-sizing: border-box;
     border-radius: 10px;
-    background-color: hsl(213, 16%, 29%);
+    background-color: var(--panel);
     border-style: solid;
-    border-color: black;
+    border-color: var(--dark);
     border-width: 2px;
     width: 670px;
     height: 400px;
@@ -54,12 +62,12 @@ body {
     position: absolute;
     top: 560px; left: 220px;
     box-sizing: border-box;
-    background-color: hsl(213, 16%, 29%);
+    background-color: var(--panel);
     width: 670px;
     height: 50px;
     border-radius: 10px;
     border-style: solid;
-    border-color: black;
+    border-color: var(--dark);
     border-width: 2px;
     padding: 6px;
     overflow: hidden;
@@ -86,14 +94,14 @@ body {
     border-radius: 10px;
     padding-left: 15px; padding-right: 15px;
     height: 34px;
-    background-color: hsl(213, 16%, 39%);
-    color: black;
+    background-color: var(--highlight);
+    color: var(--dark);
     display: flex;
     align-items: center;
     box-sizing: border-box;
     justify-content: center;
     border-style: solid;
-    border-color: black;
+    border-color: var(--dark);
     border-width: 2px;
     transition: box-shadow 0.4s ease;
 }
@@ -121,7 +129,7 @@ body {
 }
 
 .alert {
-    color: white;
+    color: var(--light);
     background-color: rgb(166, 90, 90);
 }
 
@@ -131,9 +139,9 @@ body {
     top: calc(150px + 200px - 50px); left: calc(220px + 335px - 125px);
     box-sizing: border-box;
     border-radius: 10px;
-    background-color: hsl(213, 16%, 29%);
+    background-color: var(--panel);
     border-style: solid;
-    border-color: black;
+    border-color: var(--dark);
     border-width: 2px;
     height: 150px;
     width: 250px;
@@ -154,16 +162,17 @@ body {
     width: 145px;
     float: left;
     font-size: 16px;
+    color: var(--dark);
 }
 
 .input-box-entry > input {
     width: 75px;
     float: left;
     color-scheme: dark ;
-    color: black;
-    background-color: hsl(213, 16%, 29%);
+    color: var(--dark);
+    background-color: var(--panel);
     border-width: 2px;
-    border-color: black;
+    border-color: var(--dark);
     border-style: solid;
     border-radius: 10px;
     display: border-box;
@@ -184,14 +193,14 @@ body {
     height: 34px;
     width: 100px;
     padding-left: 10px; padding-right: 10px;
-    background-color: hsl(213, 16%, 39%);
+    background-color: var(--highlight);
     display: flex;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
     border-radius: 10px;
     border-style: solid;
-    border-color: black;
+    border-color: var(--dark);
     border-width: 2px;
     font-size: 18px;
     transition: box-shadow 0.4s ease;
