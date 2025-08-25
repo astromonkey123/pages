@@ -119,16 +119,16 @@ function simulateTimeStep() {
     }
 
     // Recalculate current five times for accuracy
-    for (let n = 1; n < 5; n++) {
-        for (let i = 0; i < simContainer.circuits.length; i++) {
-            let circuit = simContainer.circuits[i];   
-            let current = stepCircuit(circuit);
+    // for (let n = 1; n < 2; n++) {
+    for (let i = 0; i < simContainer.circuits.length; i++) {
+        let circuit = simContainer.circuits[i];   
+        let current = stepCircuit(circuit);
 
-            circuit.current = current;
-            circuit.current_ddt = (current - previous_currents[i]) / dt;
-            circuit.current_idt = previous_integrals[i] + ( current * dt );
-        }
+        circuit.current = current;
+        circuit.current_ddt = (current - previous_currents[i]) / dt;
+        circuit.current_idt = previous_integrals[i] + ( current * dt );
     }
+    // }
 
     for (let circuit of simContainer.circuits) {
         circuit.elapsed_time = (Math.round(circuit.elapsed_time / dt) * dt) + dt;

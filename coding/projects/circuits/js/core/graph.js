@@ -12,7 +12,7 @@ function drawGraph() {
     const ctx = graphContainer.ctx;
 
     for (const circuit of simContainer.circuits) {
-        while (circuit.data.currents.length > graphContainer.num_times * ( 7/8 )) {
+        while (circuit.data.currents.length > graphContainer.num_times * ( 3/4 )) {
             circuit.data.currents.shift();
             circuit.data.times.shift();
         }
@@ -41,7 +41,7 @@ function drawGraph() {
     for (let h = -graph.height/3; h <= graph.height/3; h += graph.height/6) {
         ctx.beginPath();
         ctx.moveTo(0, h);
-        ctx.lineTo(graph.width, h);
+        ctx.lineTo(graph.width * (3/4), h);
         ctx.stroke();
     }
     ctx.restore();
