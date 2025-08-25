@@ -244,8 +244,9 @@ class Switch extends Element {
             ctx.moveTo((3/4) * this.width, 0);
             ctx.lineTo((1/4) * this.width, 0);
             ctx.stroke();
-            ctx.fillStyle = dark;
-            ctx.strokeStyle = dark;
+            ctx.beginPath();
+            ctx.arc((1/4) * this.width, 0, 4, 0, Math.PI * 2)
+            ctx.fill();
         } else {
             const switchX = ((3/4) * this.width) - ((2/4) * this.width * Math.cos(-0.5));
             const switchY = (2/4) * this.width * Math.sin(-0.5);
@@ -253,13 +254,15 @@ class Switch extends Element {
             ctx.moveTo((3/4) * this.width, 0);
             ctx.lineTo(switchX, switchY);
             ctx.stroke();
+            ctx.fillStyle = highlight;
+            ctx.strokeStyle = highlight;
             ctx.beginPath();
             ctx.arc(switchX, switchY, 4, 0, Math.PI * 2)
             ctx.fill();
+            ctx.beginPath();
+            ctx.arc((1/4) * this.width, 0, 4, 0, Math.PI * 2)
+            ctx.fill();
         }
-        ctx.beginPath();
-        ctx.arc((1/4) * this.width, 0, 4, 0, Math.PI * 2)
-        ctx.fill();
         ctx.restore();
     }
 }

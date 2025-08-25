@@ -34,8 +34,8 @@ function drawGraph() {
     ctx.clearRect(0, 0, graph.width, graph.height);
 
     // Draw the horizontal lines
-    ctx.fillStyle = dark;
-    ctx.strokeStyle = dark;
+    ctx.fillStyle = light;
+    ctx.strokeStyle = light;
     ctx.save();
     ctx.translate(0, graph.height/2);
     for (let h = -graph.height/3; h <= graph.height/3; h += graph.height/6) {
@@ -57,8 +57,8 @@ function drawGraph() {
     ctx.save();
     ctx.translate(0, graph.height/2);
     ctx.beginPath();
-    ctx.fillStyle = dark;
-    ctx.strokeStyle = dark;
+    ctx.fillStyle = light;
+    ctx.strokeStyle = light;
     ctx.font = "18px serif";
     for (let time_step = 0; time_step < 4; time_step ++) {
         const position = time_step * 250 * graphContainer.spacing;
@@ -78,8 +78,8 @@ function drawGraph() {
 
     ctx.save();
     ctx.translate(0, graph.height/2);
-    ctx.fillStyle = dark;
-    ctx.strokeStyle = dark;
+    ctx.fillStyle = light;
+    ctx.strokeStyle = light;
     ctx.font = "18px serif";
     ctx.fillText( display_text, 6, -graph.height/2 + 18 );
     ctx.restore();
@@ -91,6 +91,7 @@ function plot(ctx, times, currents, max_width, i) {
     // Plot the current
     ctx.fillStyle = rainbow[i % rainbow.length];
     ctx.strokeStyle = rainbow[i % rainbow.length];
+    ctx.lineWidth = 2;
     ctx.save();
     ctx.translate(0, graph.height/2);
     ctx.beginPath();
@@ -103,9 +104,10 @@ function plot(ctx, times, currents, max_width, i) {
 
     ctx.save();
     ctx.translate(max_width, getHeight( currents.at(-1) ));
-    ctx.font = "14px serif";
+    ctx.font = "18px serif";
     ctx.fillText(formatValue(currents.at(-1), "A", 3), 6, graph.height/2 + 5);
     ctx.restore();
+    ctx.lineWidth = 1;
 }
 
 function formatCurrent(current) {
