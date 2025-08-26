@@ -183,7 +183,7 @@ function addRL(simContainer) {
     simContainer.elements.push(new Inductor(
         canvas.width/2 - 50,
         canvas.height/2 - 50,
-        0.5
+        0.1
     ));
     simContainer.elements.push(new Wire(
         canvas.width/2 - 100,
@@ -247,12 +247,12 @@ function addRLC(simContainer) {
     simContainer.elements.push(new Resistor(
         canvas.width/2 + 100,
         canvas.height/2 - 50,
-        1
+        0.5
     ));
     simContainer.elements.push(new Inductor(
         canvas.width/2,
         canvas.height/2 - 50,
-        0.5
+        0.1
     ));
     simContainer.elements.push(new Capacitor(
         canvas.width/2 - 100,

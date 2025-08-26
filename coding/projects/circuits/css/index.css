@@ -1,10 +1,10 @@
 :root {
-    --panel: rgb(44, 44, 58);
-    --background: rgb(52, 54, 74);
-    --highlight: rgb(68, 74, 106);
-    --dark: rgb(22, 22, 29);
-    --light: rgb(179, 187, 223);
-    --shadow: rgba(22, 22, 29, 0.5);
+    --panel: rgb(40, 44, 60);
+    --background: rgb(50, 55, 75);
+    --highlight: rgb(70, 77, 105);
+    --dark: rgb(20, 22, 30);
+    --light: rgb(190, 200, 220);
+    --shadow: rgba(20, 22, 30, 0.5);
 }
 
 body {
@@ -121,7 +121,7 @@ body {
     justify-content: center;
     border-style: solid;
     border-color: var(--light);
-    border-width: 0px;
+    border-width: 1px;
     padding-top: 2px;
     transition: box-shadow 0.4s ease;
 }
@@ -145,7 +145,7 @@ body {
 }
 
 .button:hover {
-    box-shadow: 0 5px 10px var(--shadow);
+    box-shadow: 0 10px 5px var(--shadow);
 }
 
 .alert {
@@ -166,7 +166,7 @@ body {
     border-width: 1px;
     height: 150px;
     width: 250px;
-    box-shadow: 0 5px 10px var(--shadow);
+    box-shadow: 0 10px 5px var(--shadow);
     overflow: hidden;
 }
 
@@ -222,14 +222,14 @@ body {
     border-radius: 10px;
     border-style: solid;
     border-color: var(--light);
-    border-width: 0px;
+    border-width: 1px;
     font-size: 18px;
     transition: box-shadow 0.4s ease;
     color: var(--light);
 }
 
 .input-button:hover {
-    box-shadow: 0 5px 10px var(--shadow);
+    box-shadow: 0 10px 5px var(--shadow);
 }
 
 .help-window {

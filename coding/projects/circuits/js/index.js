@@ -1,13 +1,14 @@
 const button_slider = document.getElementById('slider');
 const help_button = document.getElementById('help');
 const help_window = document.getElementById('help-window');
+
 let total_slide = 0;
 
-button_slider.addEventListener('wheel', (e) => slideBar(e));
+button_slider.addEventListener('wheel', (e) => slideBarWheel(e));
 
 help.addEventListener('click', () => showHelpWindow());
 
-function slideBar(e) {
+function slideBarWheel(e) {
     total_slide -= e.deltaY;
 
     if (total_slide > 6) {
