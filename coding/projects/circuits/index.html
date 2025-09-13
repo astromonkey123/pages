@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Circuit Simulator</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/index.js" defer></script>
+    <script type="module" src="js/core/app.js" defer></script>
+</head>
+
+<body>
+    <canvas class="graph" id="graph" width="880" height="130"></canvas>
+
+    <div class="container">
+        <div class="button button-center" id="showData">
+            <h3 id="showDataText">Hide Details</h3>
+        </div>
+        <div class="button button-center" id="runSimulation">
+            <h3 id="runSimulationText">Pause Simulation</h3>
+        </div>
+        <h4 id="current">Current:</h4>
+        <h4 id="integral">Integral:</h4>    
+        <h4 id="derivative">Derivative:</h4>
+        <h4 id="time">Time:</h4>
+
+        <div class="bottom-bar">
+            <div class="button bar-item" id="help">
+                <h2>?</h2>
+            </div>
+        </div>
+    </div>
+
+    <canvas class="canvas" id="canvas" width="670" height="400"></canvas>
+
+    <div class="button-grid">
+        <div class="sliding-cover" id="slider-cover">
+            <div class="sliding-insert" id="slider">
+                <div class="button button-left" id="addBattery">
+                    <h3>Battery</h3>
+                </div>
+                <div class="button button-left" id="addResistor">
+                    <h3>Resistor</h3>
+                </div>
+                <div class="button button-left" id="addCapacitor">
+                    <h3>Capacitor</h3>
+                </div>
+                <div class="button button-left" id="addInductor">
+                    <h3>Inductor</h3>
+                </div>
+                <div class="button button-left" id="addWire">
+                    <h3>Wire</h3>
+                </div>
+                <div class="button button-left" id="addSwitch">
+                    <h3>Switch</h3>
+                </div>
+                <div class="button button-left" id="addSeries">
+                    <h3>Series Preset</h3>
+                </div>
+                <div class="button button-left" id="addParallel">
+                    <h3>Parallel Preset</h3>
+                </div>
+                <div class="button button-left" id="addSeriesSwitch">
+                    <h3>Switch Preset</h3>
+                </div>
+                <div class="button button-left" id="addRC">
+                    <h3>RC Preset</h3>
+                </div>
+                <div class="button button-left" id="addRL">
+                    <h3>RL Preset</h3>
+                </div>
+                <div class="button button-left" id="addLC">
+                    <h3>LC Preset</h3>
+                </div>
+                <div class="button button-left" id="addRLC">
+                    <h3>RLC Preset</h3>
+                </div>
+            </div>
+        </div>
+        <div class="button button-right alert" id="clearCanvas">
+            <h3 id="clearCanvasText">Clear</h3>
+        </div>
+    </div>
+
+    <div class="input-box" id="input-box">
+        <div class="input-box-entry" id="input-entry-1">
+            <h3 id="input-type-1">Title 1</h3>
+            <input id="input-field-1" type="number" value="1" min="0">
+            <h3 id="input-unit-1" style="width: 30px; text-align: center;">X</h3>
+        </div>
+
+        <div class="input-box-entry" id="input-entry-2">
+            <h3 id="input-type-2">Title 2</h3>
+            <input id="input-field-2" type="number" value="1" min="0">
+            <h3 id="input-unit-2" style="width: 30px; text-align: center;">X</h3>
+        </div>
+
+        <div class="input-box-bottom">
+            <div class="input-button" id="accept">
+                 <p>Accept</p>
+            </div>
+            <div class="input-button" id="cancel">
+                 <p>Cancel</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="help-window" id="help-window">
+        <p>
+            Press the buttons below to add elements
+            <br><br>
+            Hover over the buttons and scroll up and down to show more options
+            <br><br>
+            Double click elements to edit their properties or change their states
+            <br><br>
+            Drag elements to move them (drag the contacts for wires)
+            <br><br>
+            Dragging in empty space will allow you to select multiple elements
+            <br><br>
+            Hold shift while dragging to rotate elements
+            <br><br>
+            Press the help button again to close
+        </p>
+    </div>
+</body>
+
+</html>
