@@ -1,13 +1,13 @@
 .asset-holder {
   position: relative;
-  width: calc(100vw - 240px - mod(100vw - 240px, 530px) + 30px);
+  width: calc(100vw - 120px - mod(100vw - 120px, 330px) + 30px);
   margin: auto;
 }
 
 .asset {
   position: relative;
   float: left;
-  width: 500px; height: 150px;
+  width: 300px; height: 260px;
   margin-top: 30px; margin-left: 30px;
   border-radius: 5px;
   overflow: hidden;
@@ -18,24 +18,24 @@
 }
 
 .asset:hover {
-  width: 520px;
-  margin-left: 20px; margin-right: -10px;
+  margin-top: 15px;
+  padding-bottom: 15px;
 }
 
 .asset>img {
-  mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
   filter: brightness(0.7);
 }
 
 .asset-text {
   position: absolute;
-  top: 0; left: 225px;
-  width: 100%; height: 100px;
+  top: 150px; left: 0;
+  width: 100%; height: 60px;
 }
 
 .asset-text>h2 {
   margin: 0;
-  width: 275px; height: 100px;
+  width: 100%; height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,7 +45,7 @@
 
 .asset-tags {
   position: absolute;
-  top: 100px; left: 225px;
+  top: 210px; left: 0px;
   width: 275px; height: 50px;
   display: flex;
   align-items: center;
