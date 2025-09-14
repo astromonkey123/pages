@@ -1,0 +1,84 @@
+.title {
+  color: white;
+}
+
+.project {
+  position: relative;
+  height: 150px;
+  margin-top: 30px;
+  margin-left: 120px; margin-right: 120px;
+  background-color: var(--shadow);
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 0 10px 10px var(--shadow);
+  transition: all 0.4s ease;
+  color: white;
+}
+
+.project:hover {
+  margin-left: 110px; margin-right: 110px;
+}
+
+.project>img {
+  position: relative;
+  float: left;
+  width: 300px; height: 150px;
+  mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%);
+}
+
+.project-text {
+  position: relative;
+  float: left;
+  height: 150px;
+  width: calc(100vw - 240px - 300px);
+  display: flex;
+  align-items: center;
+}
+
+.project-text>h2 {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 60px;
+  margin: 0;
+  padding-left: 30px;
+  padding-top: calc(30px - 14px);
+  font-size: 28px;
+}
+
+.project-text>p {
+  position: absolute;
+  top: 60px; left: 0;
+  width: 100%; height: 40px;
+  margin: 0;
+  padding-left: 60px;
+  padding-top: (30px - 8px);
+  font-size: 16px;
+}
+
+
+.project-tags {
+  position: absolute;
+  top: 100px; left: 300px;
+  width: 100%; height: 50px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
+.project-tags>p {
+  position: relative;
+  float: left;
+  height: 30px;
+  padding-left: 10px; padding-right: 10px;
+  font-size: 14px;
+  color: white;
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+  border-radius: 15px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: white;
+  box-sizing: border-box;
+}

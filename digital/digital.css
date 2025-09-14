@@ -1,0 +1,71 @@
+.asset-holder {
+  position: relative;
+  width: calc(100vw - 240px - mod(100vw - 240px, 530px) + 30px);
+  margin: auto;
+}
+
+.asset {
+  position: relative;
+  float: left;
+  width: 500px; height: 150px;
+  margin-top: 30px; margin-left: 30px;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: var(--shadow);
+  box-shadow: 0 0 10px 10px var(--shadow);
+  transition: all 0.4s ease;
+  color: white;
+}
+
+.asset:hover {
+  width: 520px;
+  margin-left: 20px; margin-right: -10px;
+}
+
+.asset>img {
+  mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%);
+  filter: brightness(0.7);
+}
+
+.asset-text {
+  position: absolute;
+  top: 0; left: 225px;
+  width: 100%; height: 100px;
+}
+
+.asset-text>h2 {
+  margin: 0;
+  width: 275px; height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 24px;
+}
+
+.asset-tags {
+  position: absolute;
+  top: 100px; left: 225px;
+  width: 275px; height: 50px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
+.asset-tags>p {
+  position: relative;
+  float: left;
+  height: 30px;
+  padding-left: 10px; padding-right: 10px;
+  font-size: 14px;
+  color: white;
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+  border-radius: 15px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: white;
+  box-sizing: border-box;
+}

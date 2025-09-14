@@ -1,0 +1,76 @@
+.document-holder {
+  position: relative;
+  width: calc(100vw - 240px - mod(100vw - 240px, 330px) + 30px);
+  margin: auto;
+}
+
+.document {
+  position: relative;
+  float: left;
+  width: 300px; height: 300px;
+  margin-top: 30px; margin-left: 30px;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: var(--shadow);
+  box-shadow: 0 0 10px 10px var(--shadow);
+  transition: all 0.4s ease;
+  color: white;
+}
+
+.document:hover {
+  margin-top: 15px;
+  padding-bottom: 15px;
+}
+
+.document>img {
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+}
+
+.document-text {
+  position: absolute;
+  top: 100px; left: 0;
+  width: 100%; height: 150px;
+}
+
+.document-text>h2 {
+  margin: 0;
+  width: 100%; height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+
+.document-text>p {
+  margin: 0;
+  height: 90px;
+  margin-left: 40px; margin-right: 40px;
+  font-size: 16px;
+}
+
+.document-tags {
+  position: absolute;
+  top: 250px; left: 0;
+  width: 100%; height: 50px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
+.document-tags>p {
+  position: relative;
+  float: left;
+  height: 30px;
+  padding-left: 10px; padding-right: 10px;
+  font-size: 14px;
+  color: white;
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+  border-radius: 15px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: white;
+  box-sizing: border-box;
+}

@@ -1,2 +1,31 @@
-# project-site
-Website to display a list of current and future projects, and unsolved problems
+# pages
+
+## tasks
+
+Document thumbnails
+
+Rework digital page
+
+Add links for DCS assets
+
+## structure
+
+**assets**
+
+-> digital
+
+-> documents
+
+-> photography
+
+-> projects
+
+**src**
+
+-> digital
+
+-> documents
+
+-> photography
+
+-> projects

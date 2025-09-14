@@ -1,0 +1,32 @@
+.photo-holder {
+    position: relative;
+    margin: auto;
+    display: flow-root;
+    width: calc(90% - mod(90%, 400px));
+}
+
+.photo-h {
+    overflow: hidden;
+    position: relative;
+    background-color: rgb(39, 48, 67);
+    box-shadow: 0px 5px 5px 0 rgba(0,0,0,0.5);
+    margin: 20px;
+    float: left;
+    height: 240px;
+    width: 360px;
+    border-radius: 10px;
+    filter: brightness(0.7);
+}
+
+.photo-v {
+    overflow: hidden;
+    position: relative;
+    background-color: rgb(39, 48, 67);
+    box-shadow: 0px 5px 5px 0 rgba(0,0,0,0.5);
+    margin: 20px;
+    float: left;
+    height: 240px;
+    width: 160px;
+    border-radius: 10px;
+    filter: brightness(0.7);
+}

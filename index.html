@@ -4,61 +4,83 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
-    <link rel="icon" href="assets/media/global/favicon.png">
-    <link rel="stylesheet" href="assets/css/index.css">
-    <script src="assets/js/index.js" defer></script>
+    <link rel="icon" href="assets/favicon.png">
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js" defer></script>
 </head>
 
 <body>
     <nav class="navbar" id="navbar">
-        <div class="center">
-            <div class="nav-item active" id="home">
-                <a href="./">Home</a>
-            </div>
-            <div class="nav-item" id="coding">
-                <a href="coding/">Coding</a>
-            </div>
-            <div class="nav-item" id="docs">
-                <a href="docs/">Documents</a>
-            </div>
-            <div class="nav-item" id="digital">
-                <a href="digital/">Digital Assets</a>
-            </div>
-            <div class="nav-item" id="photography">
-                <a href="photography/">Photography</a>
-            </div>
-            <div class="nav-item">
-                <a href="https://www.youtube.com/@scout_raptor" target=_blank>
-                    <img src="assets/svg/youtube.svg" alt="" width="24" height="24"> 
-                </a>
-            </div>
-            <div class="nav-item">
-                <a href="https://github.com/astromonkey123" target=_blank>
-                    <img src="assets/svg/github.svg" alt="" width="24" height="24"> 
-                </a>
-            </div>
-        </div>
-        <div class="select-slider" id="nav-underline"></div>
+        <img class="navbar-name" src="assets/name.png" height="30px">
+        <a class="navbar-item" href=".">
+            <p>Home</p>
+        </a>
+        <a class="navbar-item" href="projects/">
+            <p>Projects</p>
+        </a>
+        <a class="navbar-item" href="documents/">
+            <p>Documents</p>
+        </a>
+        <a class="navbar-item" href="digital/">
+            <p>Digital Assets</p>
+        </a>
+        <a class="navbar-item" href="photography/">
+            <p>Photography</p>
+        </a>
+        <a class="navbar-icon" href="https://github.com/ethan-rosenfeld" target="_blank">
+            <img src="assets/github.svg" width="30px" height="30px">
+        </a>
     </nav>
 
-    <div id="page-body">
-        <img class="banner" src="assets/media/banners/index.jpg">
-        <div class="content" style="margin-top: calc(20vw + 50px);">
-            <h1>Welcome, Wanderer of the Interwebs!</h1>
-            <p>There's not much here yet</p>
-            <p>Click on a section above to see current and future projects, as well as some unsolved problems to ponder</p>
-            <br>
-            <p>I needed something to do</p>
+    <div class="body" id="body">
+        <img class="banner" src="assets/banner.png" width="100%">
+
+        <p class="title">Turning beautiful physics into concrete visualizations</p>
+
+        <div class="content">
+            <h2>About Me</h2>
+            <p style="margin-left: 40px;">
+                I'm a college student interested in Aerospace Engineering and Physics.
+                My dream is to help build the machines that lift us off the Earth.
+            </p>
+
+            <h2>My work</h2>
+
+            <h4>Projects</h4>
+            <p style="margin-left: 40px;">
+                I make physics and math visualizations to aid in education and exploration of various topics.
+                You can find these programs on the projects page.
+            </p>
+
+            <h4>Documents</h4>
+            <p style="margin-left: 40px;">
+                I tend to write many of my notes in LaTeX.
+                I have posted a couple of these explanations on the documents tab.
+            </p>
+
+            <h4>Digital Assets</h4>
+            <p style="margin-left: 40px;">
+                For the past few years I have been making addons to various games.
+                You can see my work and download them on this page.
+            </p>
+
+            <h4>Photography</h4>
+            <p style="margin-left: 40px;">
+                You can find some of my photography work here.
+                Much of it is from my highschool photography class. 
+            </p>
         </div>
 
         <div class="footer">
-            <hr>
-            <p>
-                This page is under construction.
-                <br>
-                Hosted on GitHub Pages -
-                Powered by HTML and curiosity
-            </p>        
+            <a href="https://github.com/ethan-rosenfeld" target="_blank">
+                <p>GitHub</p>
+            </a>
+            <a href="https://www.linkedin.com/in/ethan-rosenfeld06/" target="_blank">
+                <p>LinkedIn</p>
+            </a>
+            <a href="mailto:eg.rosenfeld@icloud.com" target="_blank">
+                <p>Contact</p>
+            </a>
         </div>
     </div>
 </body>

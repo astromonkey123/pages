@@ -1,0 +1,268 @@
+:root {
+    --panel: rgb(30, 33, 45);
+    --background: rgb(50, 55, 75);
+    --highlight: rgb(70, 77, 105);
+    --dark: rgb(20, 22, 30);
+    --light: rgb(190, 200, 220);
+    --shadow: rgba(20, 22, 30, 0.5);
+}
+
+body {
+    position: relative;
+    width: 900px;
+    background-color: var(--background);
+    margin: auto;
+}
+
+.input-container {
+    position: relative;
+    float: left;
+    background-color: var(--panel);
+    color: var(--light);
+    box-sizing: border-box;
+    width: 180px;
+    margin: 0;
+    height: 100px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: var(--light);
+    border-width: 0px;
+}
+
+.matrix-name {
+    height: 100px;
+    width: 50px;
+    float: left;
+    text-align: center;
+    align-content: center;
+}
+
+.matrix-bracket {
+    position: relative;
+    height: 100px;
+    width: 10px;
+    float: left;
+}
+
+.matrix-container {
+    width: 100px; height: 100px;
+    float: left;
+}
+
+.matrix-row {
+    margin-top: 10px;
+    height: 35px;
+    display: flex;
+}
+
+.matrix-row>input {
+    background-color: var(--highlight);
+    box-sizing: border-box;
+    margin-left: 10px;
+    float: left;
+    width: 35px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: var(--light);
+    text-align: center;
+    color: var(--light);
+    font-size: 16px;
+    transition: all 0.4s ease;
+}
+
+.matrix-row>input:hover {
+    background-color: var(--background);
+    box-shadow: 0 5px 10px black;
+}
+
+.action-container {
+    position: relative;
+    float: left;
+    background-color: var(--panel);
+    color: var(--light);
+    box-sizing: border-box;
+    width: 100px;
+    margin: 0;
+    height: 100px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: var(--light);
+    border-width: 0px;
+}
+
+.option-container {
+    position: relative;
+    float: left;
+    background-color: var(--panel);
+    color: var(--light);
+    box-sizing: border-box;
+    width: 600px;
+    margin: 0;
+    height: 100px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: var(--light);
+    border-width: 0px;
+}
+
+.property-container {
+    position: relative;
+    float: left;
+    border-radius: 10px;
+    background-color: var(--panel);
+    width: 290px;
+    height: 500px;
+    color: var(--light);
+    overflow: hidden;
+}
+
+.container-row {
+    margin-top: 10px;
+    height: 35px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+.property-row {
+    box-sizing: border-box;
+    position: relative;
+    top: 0;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-style: solid;
+    border-color: var(--light);
+    border-width: 0px;
+    padding-bottom: 10px;
+}
+
+.property-row>h4 {
+    height: 16px;
+    margin: 0;
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 0;
+    font-size: 16px;
+}
+
+.property-row>p {
+    height: 16px;
+    margin: 0;
+    margin-top: 10px;
+    margin-left: 20px;
+    padding: 0;
+    font-size: 16px;
+}
+
+.action-button {
+    position: relative;
+    font-size: 14px;
+    border-radius: 10px;
+    height: 35px;
+    width: 80px;
+    margin-left: 10px;
+    color: var(--light);
+    background-color: var(--highlight);
+    box-sizing: border-box;
+    border-style: solid;
+    border-color: var(--light);
+    border-width: 1px;
+    transition: all 0.4s ease;
+}
+
+.action-button:hover {
+    background-color: var(--background);
+    box-shadow: 0 5px 10px black;
+}
+
+.action-button>h4 {
+    top: -20px;
+    left: 21px;
+    position: absolute;
+    font-size: 18px;
+    width: 30px; height: 30px;
+    text-align: center;
+    align-content: center;
+}
+
+.action-button>p {
+    top: -7px;
+    left: 38px;
+    position: absolute;
+    font-size: 12px;
+    width: 15px; height: 15px;
+    text-align: center;
+    align-content: center;
+}
+
+.canvas {
+    position: relative;
+    float: left;
+    margin-left: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: var(--panel);
+    border-style: solid;
+    border-color: var(--light);
+    border-width: 1px;
+    width: 600px;
+    height: 500px;
+}
+
+#right-bar {
+    position: absolute;
+    left: 0;
+    width: 2px; height: 90px;
+    margin-top: 5px;
+    background-color: var(--light);
+}
+
+#top-right-bar {
+    position: absolute;
+    left: 0;
+    width: 10px; height: 2px;
+    margin-top: 5px;
+    background-color: var(--light);
+}
+
+#bottom-right-bar {
+    position: absolute;
+    left: 0;
+    width: 10px; height: 2px;
+    margin-top: 93px;
+    background-color: var(--light);
+}
+
+#left-bar {
+    position: absolute;
+    right: 0;
+    width: 2px; height: 90px;
+    margin-top: 5px;
+    background-color: var(--light);
+}
+
+#top-left-bar {
+    position: absolute;
+    right: 0;
+    width: 10px; height: 2px;
+    margin-top: 5px;
+    background-color: var(--light);
+}
+
+#bottom-left-bar {
+    position: absolute;
+    right: 0;
+    width: 10px; height: 2px;
+    margin-top: 93px;
+    background-color: var(--light);
+}

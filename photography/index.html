@@ -5,269 +5,127 @@
     <meta charset="UTF-8">
     <title>Photography</title>
     <link rel="icon" href="../assets/favicon.png">
-    <link rel="stylesheet" href="../assets/css/index.css">
-    <link rel="stylesheet" href="../assets/css/photography.css">
-    <script src="../assets/js/index.js" defer></script>
+    <link rel="stylesheet" href="../index.css">
+    <link rel="stylesheet" href="photography.css">
+    <script src="../index.js" defer></script>
 </head>
 
 <body>
     <nav class="navbar" id="navbar">
-        <div class="center">
-            <div class="nav-item" id="home">
-                <a href="../">Home</a>
-            </div>
-            <div class="nav-item" id="coding">
-                <a href="../coding/">Coding</a>
-            </div>
-            <div class="nav-item" id="docs">
-                <a href="../docs/">Documents</a>
-            </div>
-            <div class="nav-item" id="digital">
-                <a href="../digital/">Digital Assets</a>
-            </div>
-            <div class="nav-item active" id="photography">
-                <a href="./">Photography</a>
-            </div>
-            <div class="nav-item">
-                <a href="https://www.youtube.com/@scout_raptor" target=_blank>
-                    <img src="../assets/svg/youtube.svg" alt="" width="24" height="24"> 
-                </a>
-            </div>
-            <div class="nav-item">
-                <a href="https://github.com/astromonkey123" target=_blank>
-                    <img src="../assets/svg/github.svg" alt="" width="24" height="24"> 
-                </a>
-            </div>
-        </div>
-        <div class="select-slider" id="nav-underline"></div>
+        <img class="navbar-name" src="../assets/name.png" height="30px">
+        <a class="navbar-item" href="../">
+            <p>Home</p>
+        </a>
+        <a class="navbar-item" href="../projects/">
+            <p>Projects</p>
+        </a>
+        <a class="navbar-item" href="../documents/">
+            <p>Documents</p>
+        </a>
+        <a class="navbar-item" href="../digital/">
+            <p>Digital Assets</p>
+        </a>
+        <a class="navbar-item" href=".">
+            <p>Photography</p>
+        </a>
+        <a class="navbar-icon" href="https://github.com/ethan-rosenfeld" target="_blank">
+            <img src="../assets/github.svg" width="30px" height="30px">
+        </a>
     </nav>
 
-    <div id="page-body">
-        <img class="banner" src="../assets/media/banners/photography.jpg">
-        <div class="content" style="margin-top: calc(20vw + 50px);">
-            <h1>Photography</h1>
-            <div style="padding: 0 50px;">
-                <p>
-                    This page hosts a gallery of the images I've taken, both
-                    in the real world and while playing games.
-                </p>
+    <div class="body" id="body">
+        <img class="banner" src="../assets/photography/banner.png" width="100%">
+
+        <div class="content">
+            <h2>In the World</h2>
+        </div>
+
+        <div class="photo-holder">
+            <div class="photo-h">
+                <img src="../assets/photography/photos/train.jpg" width="360" height="240">
+            </div>
+            <div class="photo-h">
+                <img src="../assets/photography/photos/power_plant.jpg" width="360" height="240">
+            </div>
+            <div class="photo-h">
+                <img src="../assets/photography/photos/frontier.jpg" width="360" height="240">
+            </div>
+            <div class="photo-h">
+                <img src="../assets/photography/photos/apartments.jpg" width="360" height="240">
+            </div>
+            <div class="photo-h">
+                <img src="../assets/photography/photos/birds.jpg" width="360" height="240">
+            </div>
+            <div class="photo-h">
+                <img src="../assets/photography/photos/bethlehem.jpg" width="360" height="240">
+            </div>
+            <div class="photo-h">
+                <img src="../assets/photography/photos/chicago.jpg" width="360" height="240">
+            </div>
+            <div class="photo-v">
+                <img src="../assets/photography/photos/bridge.jpg" width="160" height="240">
+            </div>
+            <div class="photo-v">
+                <img src="../assets/photography/photos/swan.jpg" width="160" height="240">
+            </div>
+            <div class="photo-v">
+                <img src="../assets/photography/photos/freedom_tower.jpg" width="160" height="240">
             </div>
         </div>
 
-        <div class="content-small">
-            <h1>In the World</h1>
+        <div class="content">
+            <h2>In Game</h2>
         </div>
 
-        <div class="photo-grid">
-            <div class="photo-card-h">
-                <img src="../assets/media/photography/world/january_01_web_h.jpg" width="360" height="240">
-                <div class="photo-info">
-                    <h3>Kearny, <br> New Jersey</h3>
-                </div>
+        <div class="photo-holder">
+            <div class="photo-h">
+                <img src="../assets/photography/game/dcs_1.jpg" width="360" height="240">
             </div>
-            <div class="photo-card-h">
-                <img src="../assets/media/photography/world/january_02_web_h.jpg" width="360" height="240">
-                <div class="photo-info">
-                    <h3>Kearny, <br> New Jersey</h3>
-                </div>
+            <div class="photo-h">
+                <img src="../assets/photography/game/dcs_2.jpg" width="360" height="240">
             </div>
-            <div class="photo-card-h">
-                <img src="../assets/media/photography/world/movement_01_web_h.jpg" width="360" height="240">
-                <div class="photo-info">
-                    <h3>Islip, <br> New York</h3>
-                </div>
+            <div class="photo-h">
+                <img src="../assets/photography/game/dcs_3.jpg" width="360" height="240">
             </div>
-            <div class="photo-card-h">
-                <img src="../assets/media/photography/world/november_02_web_h.jpg" width="360" height="240">
-                <div class="photo-info">
-                    <h3>New York, <br> New York</h3>
-                </div>
+            <div class="photo-h">
+                <img src="../assets/photography/game/dcs_4.jpg" width="360" height="240">
             </div>
-            <div class="photo-card-h">
-                <img src="../assets/media/photography/world/october_02_web_h.jpg" width="360" height="240">
-                <div class="photo-info">
-                    <h3>Bridgehampton, <br> New York</h3>
-                </div>
+            <div class="photo-h">
+                <img src="../assets/photography/game/dcs_5.jpg" width="360" height="240">
             </div>
-            <div class="photo-card-h">
-                <img src="../assets/media/photography/world/september_01_web_h.jpg" width="360" height="240">
-                <div class="photo-info">
-                    <h3>Bethlehem, <br> Pennsylvania</h3>
-                </div>
+            <div class="photo-h">
+                <img src="../assets/photography/game/dcs_6.jpg" width="360" height="240">
             </div>
-            <div class="photo-card-h">
-                <img src="../assets/media/photography/world/views_01_web_h.jpg" width="360" height="240">
-                <div class="photo-info">
-                    <h3>Chicago, <br> Illinois</h3>
-                </div>
+            <div class="photo-h">
+                <img src="../assets/photography/game/dcs_7.jpg" width="360" height="240">
             </div>
-            <div class="photo-card-v">
-                <img src="../assets/media/photography/world/febraury_03_web_v.jpg" width="160" height="240">
-                <div class="photo-info">
-                    <h3>Bay Shore, <br> New York</h3>
-                </div>
+            <div class="photo-h">
+                <img src="../assets/photography/game/dcs_8.jpg" width="360" height="240">
             </div>
-            <div class="photo-card-v">
-                <img src="../assets/media/photography/world/october_01_web_v.jpg" width="160" height="240">
-                <div class="photo-info">
-                    <h3>Bridgehampton, <br> New York</h3>
-                </div>
+            <div class="photo-h">
+                <img src="../assets/photography/game/msfs_1.jpg" width="360" height="240">
             </div>
-            <div class="photo-card-v">
-                <img src="../assets/media/photography/world/views_02_web_v.jpg" width="160" height="240">
-                <div class="photo-info">
-                    <h3>New York, <br> New York</h3>
-                </div>
+            <div class="photo-h">
+                <img src="../assets/photography/game/msfs_2.jpg" width="360" height="240">
             </div>
-        </div>
-
-        <div class="content-small">
-            <h1>In Game</h1>
-        </div>
-
-        <div class="photo-grid">
-            <div class="photo-card-h">
-                <img src="../assets/media/photography/game/dcs_1_web.jpg" width="360" height="240">
-                <div class="photo-info">
-                    <h3>F-16I <br> Israel, DCS</h3>
-                </div>
+            <div class="photo-h">
+                <img src="../assets/photography/game/msfs_3.jpg" width="360" height="240">
             </div>
-            <div class="photo-card-h">
-                <img src="../assets/media/photography/game/dcs_2_web.jpg" width="360" height="240">
-                <div class="photo-info">
-                    <h3>OH-58D <br> Syria, DCS</h3>
-                </div>
-            </div>
-            <div class="photo-card-h">
-                <img src="../assets/media/photography/game/dcs_3_web.jpg" width="360" height="240">
-                <div class="photo-info">
-                    <h3>AH-64D <br> USA, DCS</h3>
-                </div>
-            </div>
-            <div class="photo-card-h">
-                <img src="../assets/media/photography/game/dcs_4_web.jpg" width="360" height="240">
-                <div class="photo-info">
-                    <h3>F-15E <br> Georgia, DCS</h3>
-                </div>
-            </div>
-            <div class="photo-card-h">
-                <img src="../assets/media/photography/game/dcs_5_web.jpg" width="360" height="240">
-                <div class="photo-info">
-                    <h3>AH-64D <br> Syria, DCS</h3>
-                </div>
-            </div>
-            <div class="photo-card-h">
-                <img src="../assets/media/photography/game/dcs_6_web.jpg" width="360" height="240">
-                <div class="photo-info">
-                    <h3>OH-58D, AH-64D <br> Syria, DCS</h3>
-                </div>
-            </div>
-            <div class="photo-card-h">
-                <img src="../assets/media/photography/game/dcs_7_web.jpg" width="360" height="240">
-                <div class="photo-info">
-                    <h3>Mi-24P <br> Russia, DCS</h3>
-                </div>
-            </div>
-            <div class="photo-card-h">
-                <img src="../assets/media/photography/game/dcs_8_web.jpg" width="360" height="240">
-                <div class="photo-info">
-                    <h3>F/A-18C <br> Iran, DCS</h3>
-                </div>
-            </div>
-            <div class="photo-card-h">
-                <img src="../assets/media/photography/game/dcs_10_web.jpg" width="360" height="240">
-                <div class="photo-info">
-                    <h3>F-22A <br> USA, DCS</h3>
-                </div>
-            </div>
-            <div class="photo-card-h">
-                <img src="../assets/media/photography/game/dcs_11_web.jpg" width="360" height="240">
-                <div class="photo-info">
-                    <h3>MQ-9A <br> Syria, DCS</h3>
-                </div>
-            </div>
-            <div class="photo-card-h">
-                <img src="../assets/media/photography/game/dcs_12_web.jpg" width="360" height="240">
-                <div class="photo-info">
-                    <h3>MQ-9A <br> Syria, DCS</h3>
-                </div>
-            </div>
-            <div class="photo-card-h">
-                <img src="../assets/media/photography/game/dcs_13_web.jpg" width="360" height="240">
-                <div class="photo-info">
-                    <h3>F-16C <br> USA, DCS</h3>
-                </div>
-            </div>
-            <div class="photo-card-h">
-                <img src="../assets/media/photography/game/dcs_14_web.jpg" width="360" height="240">
-                <div class="photo-info">
-                    <h3>F-16I <br> Iraq, DCS</h3>
-                </div>
-            </div>
-            <div class="photo-card-h">
-                <img src="../assets/media/photography/game/dcs_15_web.jpg" width="360" height="240">
-                <div class="photo-info">
-                    <h3>F-15E <br> USA, DCS</h3>
-                </div>
-            </div>
-            <div class="photo-card-h">
-                <img src="../assets/media/photography/game/dcs_16_web.jpg" width="360" height="240">
-                <div class="photo-info">
-                    <h3>F-16I <br> Israel, DCS</h3>
-                </div>
-            </div>
-            <div class="photo-card-h">
-                <img src="../assets/media/photography/game/dcs_17_web.jpg" width="360" height="240">
-                <div class="photo-info">
-                    <h3>F-16C <br> USA, DCS</h3>
-                </div>
-            </div>
-            <div class="photo-card-h">
-                <img src="../assets/media/photography/game/dcs_18_web.jpg" width="360" height="240">
-                <div class="photo-info">
-                    <h3>F-16C <br> USA, DCS</h3>
-                </div>
-            </div>
-            <div class="photo-card-h">
-                <img src="../assets/media/photography/game/msfs_1_web.jpg" width="360" height="240">
-                <div class="photo-info">
-                    <h3>787-8 <br> USA, MSFS</h3>
-                </div>
-            </div>
-            <div class="photo-card-h">
-                <img src="../assets/media/photography/game/msfs_2_web.jpg" width="360" height="240">
-                <div class="photo-info">
-                    <h3>A320neo <br> USA, MSFS</h3>
-                </div>
-            </div>
-            <div class="photo-card-h">
-                <img src="../assets/media/photography/game/msfs_3_web.jpg" width="360" height="240">
-                <div class="photo-info">
-                    <h3>F-35C <br> USA, MSFS</h3>
-                </div>
-            </div>
-            <div class="photo-card-h">
-                <img src="../assets/media/photography/game/msfs_4_web.jpg" width="360" height="240">
-                <div class="photo-info">
-                    <h3>C170 <br> USA, MSFS</h3>
-                </div>
-            </div>
-            <div class="photo-card-h">
-                <img src="../assets/media/photography/game/ksp_1_web.jpg" width="360" height="240">
-                <div class="photo-info">
-                    <h3>Athena-Class Rover <br> Minmus, KSP</h3>
-                </div>
+            <div class="photo-h">
+                <img src="../assets/photography/game/msfs_4.jpg" width="360" height="240">
             </div>
         </div>
 
         <div class="footer">
-            <hr>
-            <p>
-                This page is under construction.
-                <br>
-                Hosted on GitHub Pages -
-                Powered by HTML and curiosity
-            </p>        
+            <a href="https://github.com/ethan-rosenfeld" target="_blank">
+                <p>GitHub</p>
+            </a>
+            <a href="https://www.linkedin.com/in/ethan-rosenfeld06/" target="_blank">
+                <p>LinkedIn</p>
+            </a>
+            <a href="mailto:eg.rosenfeld@icloud.com" target="_blank">
+                <p>Contact</p>
+            </a>
         </div>
     </div>
 </body>
