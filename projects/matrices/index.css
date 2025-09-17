@@ -1,71 +1,88 @@
 :root {
-    --panel: rgb(30, 33, 45);
-    --background: rgb(50, 55, 75);
-    --highlight: rgb(70, 77, 105);
-    --dark: rgb(20, 22, 30);
-    --light: rgb(190, 200, 220);
-    --shadow: rgba(20, 22, 30, 0.5);
+  --highlight: rgb(26, 27, 36);
+  --shadow: rgb(22, 22, 28);
+  --panel: rgb(31, 33, 40);
+  --light: rgb(190, 200, 220);
 }
 
 body {
     position: relative;
     width: 900px;
-    background-color: var(--background);
+    background-color: var(--highlight);
     margin: auto;
 }
 
-.input-container {
+.matrix-equation {
     position: relative;
     float: left;
-    background-color: var(--panel);
-    color: var(--light);
-    box-sizing: border-box;
-    width: 180px;
-    margin: 0;
     height: 100px;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    border-radius: 10px;
-    border-style: solid;
-    border-color: var(--light);
-    border-width: 0px;
+    margin-left: 10px;
 }
 
 .matrix-name {
-    height: 100px;
-    width: 50px;
+    margin: 0;
+    margin-right: 4px;
+    position: relative;
     float: left;
-    text-align: center;
-    align-content: center;
+    height: 100px;
+    display: flex;
+    align-items: center;
 }
 
 .matrix-bracket {
     position: relative;
+    float: left;
     height: 100px;
-    width: 10px;
+    width: 25px;
+}
+
+.top {
+    position: absolute;
+    background-color: var(--light);
+    width: 15px; height: 2px;
+    top: 10px;
+    left: 5px;
+}
+
+.bottom {
+    position: absolute;
+    background-color: var(--light);
+    width: 15px; height: 2px;
+    bottom: 10px;
+    left: 5px;
+}
+
+.left {
+    position: absolute;
+    background-color: var(--light);
+    width: 2px; height: 80px;
+    top: 10px;
+    left: 5px;
+}
+
+.right {
+    position: absolute;
+    background-color: var(--light);
+    width: 2px; height: 80px;
+    top: 10px;
+    right: 5px;
+}
+
+.matrix-input {
+    margin-top: 15px;
+    position: relative;
     float: left;
+    width: 50px; height: 70px;
 }
 
-.matrix-container {
-    width: 100px; height: 100px;
-    float: left;
-}
-
-.matrix-row {
-    margin-top: 10px;
-    height: 35px;
-    display: flex;
-}
-
-.matrix-row>input {
-    background-color: var(--highlight);
+.matrix-input>input {
+    background-color: var(--shadow);
+    margin-bottom: 10px;
+    width: 50px; height: 30px;
     box-sizing: border-box;
-    margin-left: 10px;
-    float: left;
-    width: 35px;
     border-width: 1px;
     border-style: solid;
-    border-radius: 10px;
+    border-radius: 5px;
     border-color: var(--light);
     text-align: center;
     color: var(--light);
@@ -73,64 +90,91 @@ body {
     transition: all 0.4s ease;
 }
 
-.matrix-row>input:hover {
-    background-color: var(--background);
+.matrix-input>input:hover {
+    background-color: var(--highlight);
     box-shadow: 0 5px 10px black;
 }
 
-.action-container {
+.matrix-spacer {
+    margin-top: 15px;
+    position: relative;
+    float: left;
+    width: 10px; height: 70px;
+}
+
+.input-container {
+    z-index: 100;
     position: relative;
     float: left;
     background-color: var(--panel);
     color: var(--light);
     box-sizing: border-box;
-    width: 100px;
+    width: 230px;
+    margin: 0;
+    height: 100px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border-radius: 25px;
+    box-shadow: 0 0 5px 5px var(--shadow);
+    display: flex;
+    padding-left: 10px;
+}
+
+.action-container {
+    z-index: 100;
+    position: relative;
+    float: left;
+    background-color: var(--panel);
+    color: var(--light);
+    box-sizing: border-box;
+    width: 120px;
     margin: 0;
     height: 100px;
     margin-bottom: 10px;
     margin-top: 10px;
     margin-left: 10px;
-    border-radius: 10px;
-    border-style: solid;
-    border-color: var(--light);
-    border-width: 0px;
+    border-radius: 25px;
+    box-shadow: 0 0 5px 5px var(--shadow);
 }
 
 .option-container {
+    z-index: 100;
     position: relative;
     float: left;
     background-color: var(--panel);
     color: var(--light);
     box-sizing: border-box;
-    width: 600px;
+    width: 530px;
     margin: 0;
     height: 100px;
     margin-bottom: 10px;
     margin-top: 10px;
     margin-left: 10px;
-    border-radius: 10px;
-    border-style: solid;
-    border-color: var(--light);
-    border-width: 0px;
+    border-radius: 25px;
+    box-shadow: 0 0 5px 5px var(--shadow);
+    display: flex;
+    justify-content: space-around;
 }
 
 .property-container {
+    z-index: 100;
     position: relative;
     float: left;
-    border-radius: 10px;
+    border-radius: 25px;
     background-color: var(--panel);
-    width: 290px;
+    width: 230px;
     height: 500px;
     color: var(--light);
     overflow: hidden;
+    box-shadow: 0 0 5px 5px var(--shadow);
 }
 
-.container-row {
+.action-row {
     margin-top: 10px;
     height: 35px;
+    width: 110px;
     display: flex;
-    text-align: center;
-    align-items: center;
+    justify-content: center;
 }
 
 .property-row {
@@ -172,7 +216,7 @@ body {
     width: 80px;
     margin-left: 10px;
     color: var(--light);
-    background-color: var(--highlight);
+    background-color: var(--shadow);
     box-sizing: border-box;
     border-style: solid;
     border-color: var(--light);
@@ -210,59 +254,9 @@ body {
     float: left;
     margin-left: 10px;
     box-sizing: border-box;
-    border-radius: 10px;
+    border-radius: 25px;
     background-color: var(--panel);
-    border-style: solid;
-    border-color: var(--light);
-    border-width: 1px;
-    width: 600px;
+    width: 660px;
     height: 500px;
-}
-
-#right-bar {
-    position: absolute;
-    left: 0;
-    width: 2px; height: 90px;
-    margin-top: 5px;
-    background-color: var(--light);
-}
-
-#top-right-bar {
-    position: absolute;
-    left: 0;
-    width: 10px; height: 2px;
-    margin-top: 5px;
-    background-color: var(--light);
-}
-
-#bottom-right-bar {
-    position: absolute;
-    left: 0;
-    width: 10px; height: 2px;
-    margin-top: 93px;
-    background-color: var(--light);
-}
-
-#left-bar {
-    position: absolute;
-    right: 0;
-    width: 2px; height: 90px;
-    margin-top: 5px;
-    background-color: var(--light);
-}
-
-#top-left-bar {
-    position: absolute;
-    right: 0;
-    width: 10px; height: 2px;
-    margin-top: 5px;
-    background-color: var(--light);
-}
-
-#bottom-left-bar {
-    position: absolute;
-    right: 0;
-    width: 10px; height: 2px;
-    margin-top: 93px;
-    background-color: var(--light);
+    box-shadow: 0 0 10px 10px var(--shadow);
 }

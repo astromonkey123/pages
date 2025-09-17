@@ -17,6 +17,15 @@ const a11_input = document.getElementById('a11');
 const a12_input = document.getElementById('a12');
 const a21_input = document.getElementById('a21');
 const a22_input = document.getElementById('a22');
+
+const e11_input = document.getElementById('e11');
+const e12_input = document.getElementById('e12');
+const e21_input = document.getElementById('e21');
+const e22_input = document.getElementById('e22');
+
+const v1_input = document.getElementById('v1');
+const v2_input = document.getElementById('v2');
+
 const invert_input = document.getElementById('invert');
 const transpose_input = document.getElementById('transpose');
 const rank_output = document.getElementById('rank');
@@ -32,7 +41,8 @@ function drawGrid(v1, v2, color, width) {
     const lowerLeftBound = pixelsToCoords(0, canvas.height);
     const upperRightBound = pixelsToCoords(canvas.width, 0);
 
-    const gridSpacing = Math.pow(5, Math.ceil(log(50 / gridContainer.coordScale, 5)));
+    const threshold = 5
+    const gridSpacing = Math.pow(threshold, Math.ceil(log(50 / gridContainer.coordScale, threshold)));
 
     const [x_min, y_min] = lowerLeftBound;
     const [x_max, y_max] = upperRightBound;
@@ -72,9 +82,15 @@ function drawGrid(v1, v2, color, width) {
             ctx.stroke();
 
             if (x == 0) {
-                ctx.fillText(y.toFixed(1), 10, 10);
+                ctx.fillText(y.toFixed(0), 5, 20);
+                ctx.beginPath();
+                ctx.arc(0, 0, 3, 0, Math.PI * 2)
+                ctx.fill();
             } else if (y == 0) {
-                ctx.fillText(x.toFixed(1), 10, 10);
+                ctx.fillText(x.toFixed(0), 5, 20);
+                ctx.beginPath();
+                ctx.arc(0, 0, 3, 0, Math.PI * 2)
+                ctx.fill();
             }
 
             ctx.restore();
@@ -114,6 +130,14 @@ function appPeriodic() {
     gridContainer.matrix.a21 = parseFloat(a21_input.value);
     gridContainer.matrix.a22 = parseFloat(a22_input.value);
 
+    const e11 = parseFloat(e11_input.value);
+    const e12 = parseFloat(e12_input.value);
+    const e21 = parseFloat(e21_input.value);
+    const e22 = parseFloat(e22_input.value);
+
+    const v1 = parseFloat(v1_input.value);
+    const v2 = parseFloat(v2_input.value);
+
     const [c1, u1, c2, u2] = updateProperties();
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -121,26 +145,32 @@ function appPeriodic() {
     ctx.strokeStyle = light;
     ctx.font = "12px serif";
 
-    const e1 = new Vector(1, 0);
-    const e2 = new Vector(0, 1);
+    const e1 = new Vector(e11, e12);
+    const e2 = new Vector(e21, e22);
 
-    const v1 = gridContainer.matrix.multiply(e1);
-    const v2 = gridContainer.matrix.multiply(e2);
+    const v = new Vector(v1, v2);
+    const vbar = gridContainer.matrix.multiply(v);
+
+    const ebar_1 = gridContainer.matrix.multiply(e1);
+    const ebar_2 = gridContainer.matrix.multiply(e2);
 
     drawGrid(e1, e2, "white", 0.5);
-    drawGrid(v1, v2, "purple", 1);
+    drawGrid(ebar_1, ebar_2, "#7c98ff", 1);
 
     drawVector(e1, "white", 2, true);
     drawVector(e2, "white", 2, true);
 
-    drawVector(v1, "purple", 4, true);
-    drawVector(v2, "purple", 4, true);
+    drawVector(ebar_1, "#7c98ff", 4, true);
+    drawVector(ebar_2, "#7c98ff", 4, true);
 
-    drawVector(u1, "green", 3, true);
-    drawVector(u2, "green", 3, true);
+    drawVector(u1, "#7cff98", 3, true);
+    drawVector(u2, "#7cff98", 3, true);
 
-    drawVector(u1._scale(c1), "green", 2, true);
-    drawVector(u2._scale(c2), "green", 2, true);
+    drawVector(u1._scale(c1), "#7cff98", 1, true);
+    drawVector(u2._scale(c2), "#7cff98", 1, true);
+
+    drawVector(v, "#ff987c", 3, true);
+    drawVector(vbar, "#ff987c", 1, true);
 }
 
 function updateValues() {
@@ -157,12 +187,12 @@ function updateProperties() {
     trace_output.innerHTML = gridContainer.matrix.trace();
     determinant_output.innerHTML = gridContainer.matrix.determinant();
     polynomial_output.innerHTML = gridContainer.matrix.characteristicPolynomial();
-    eigval_1_output.innerHTML = eigval_1;
-    eigval_2_output.innerHTML = eigval_2;
+    eigval_1_output.innerHTML = "λ1 = " + eigval_1;
+    eigval_2_output.innerHTML = "λ2 = " + eigval_2;
     const u1 = gridContainer.matrix.eigenvector(eigval_1);
     const u2 = gridContainer.matrix.eigenvector(eigval_2);
-    eigvec_1_output.innerHTML = u1.asString();
-    eigvec_2_output.innerHTML = u2.asString();
+    eigvec_1_output.innerHTML = "<span style=\"color:#7cff98\">u1</span> = " + u1.asString();
+    eigvec_2_output.innerHTML = "<span style=\"color:#7cff98\">u2</span> = " + u2.asString();
 
     return [eigval_1, u1, eigval_2, u2];
 }
@@ -182,7 +212,13 @@ transpose_input.addEventListener('click', () => {
 });
 
 document.addEventListener('keypress', (e) => {
-    if (e.key == 'r') gridContainer.resetFields();
+    if (e.key == 'r') {
+        gridContainer.resetFields();
+        e11_input.value = 1;
+        e12_input.value = 0;
+        e21_input.value = 0;
+        e22_input.value = 1;
+    }
 });
 
 setInterval(appPeriodic, 10);

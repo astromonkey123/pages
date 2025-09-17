@@ -4,48 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <title>Matrix Transformations</title>
-    <link rel="stylesheet" href="css/index.css">
-    <script src="js/index.js" defer></script>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js" defer></script>
     <script type="module" src="js/core/app.js" defer></script>
 </head>
 
 <body>
     <div class="input-container">
-        <div class="matrix-name">
-            <h3>
-                A =
-            </h3>
-        </div>
-        <div class="matrix-bracket">
-            <div id="right-bar"></div>
-            <div id="top-right-bar"></div>
-            <div id="bottom-right-bar"></div>
-        </div>
-        <div class="matrix-container">
-            <div class="matrix-row">
+        <div class="matrix-equation">
+            <h3 class="matrix-name" style="color: #7c98ff">A</h3>
+            <h3 class="matrix-name">=</h3>
+            <div class="matrix-bracket">
+                <div class="top"></div>
+                <div class="left"></div>
+                <div class="bottom"></div>
+            </div>
+            <div class="matrix-input">
                 <input type="text" id="a11" value="1">
                 <input type="text" id="a12" value="0">
             </div>
-            <div class="matrix-row">
+            <div class="matrix-spacer"></div>
+            <div class="matrix-input">
                 <input type="text" id="a21" value="0">
                 <input type="text" id="a22" value="1">
             </div>
-        </div>
-        <div class="matrix-bracket">
-            <div id="left-bar"></div>
-            <div id="top-left-bar"></div>
-            <div id="bottom-left-bar"></div>
+            <div class="matrix-bracket">
+                <div class="top"></div>
+                <div class="right"></div>
+                <div class="bottom"></div>
+            </div>
         </div>
     </div>
 
     <div class="action-container">
-         <div class="container-row">
+         <div class="action-row">
             <div class="action-button" id="invert">
                 <h4>A</h4>
                 <p>-1</p>
             </div>
         </div>
-        <div class="container-row">
+        <div class="action-row">
             <div class="action-button" id="transpose">
                 <h4>A</h4>
                 <p>T</p>
@@ -54,7 +52,62 @@
     </div>
 
     <div class="option-container">
- 
+        <div class="matrix-equation">
+            <h3 class="matrix-name" style="color: #ffffff">e1</h3>
+            <h3 class="matrix-name">=</h3>
+            <div class="matrix-bracket">
+                <div class="top"></div>
+                <div class="left"></div>
+                <div class="bottom"></div>
+            </div>
+            <div class="matrix-input">
+                <input type="text" id="e11" value="1">
+                <input type="text" id="e12" value="0">
+            </div>
+            <div class="matrix-bracket">
+                <div class="top"></div>
+                <div class="right"></div>
+                <div class="bottom"></div>
+            </div>
+        </div>
+
+        <div class="matrix-equation">
+            <h3 class="matrix-name" style="color: #ffffff">e2</h3>
+            <h3 class="matrix-name">=</h3>
+            <div class="matrix-bracket">
+                <div class="top"></div>
+                <div class="left"></div>
+                <div class="bottom"></div>
+            </div>
+            <div class="matrix-input">
+                <input type="text" id="e21" value="0">
+                <input type="text" id="e22" value="1">
+            </div>
+            <div class="matrix-bracket">
+                <div class="top"></div>
+                <div class="right"></div>
+                <div class="bottom"></div>
+            </div>
+        </div>
+
+        <div class="matrix-equation">
+            <h3 class="matrix-name" style="color: #ff987c">v</h3>
+            <h3 class="matrix-name">=</h3>
+            <div class="matrix-bracket">
+                <div class="top"></div>
+                <div class="left"></div>
+                <div class="bottom"></div>
+            </div>
+            <div class="matrix-input">
+                <input type="text" id="v1" value="2">
+                <input type="text" id="v2" value="3">
+            </div>
+            <div class="matrix-bracket">
+                <div class="top"></div>
+                <div class="right"></div>
+                <div class="bottom"></div>
+            </div>
+        </div>
     </div>
 
     <div class="property-container">
@@ -86,7 +139,7 @@
         </div>
     </div>
     
-    <canvas class="canvas" id="canvas" width="600" height="500"></canvas>
+    <canvas class="canvas" id="canvas" width="660" height="500"></canvas>
 </body>
 
 </html>
