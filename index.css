@@ -1,12 +1,14 @@
 :root {
   --highlight: rgb(26, 27, 36);
   --shadow: rgb(22, 22, 28);
+  --panel: rgb(31, 33, 40);
+  --light: rgb(190, 200, 220);
 }
 
 body {
   background-color: var(--highlight);
   font-family: Arial, Helvetica, sans-serif;
-  color: white;
+  color: var(--light);
 }
 
 .body {
@@ -42,7 +44,7 @@ body {
   align-items: center;
   text-decoration: none;
   border-radius: 5px;
-  color: white;
+  color: var(--light);
   font-size: 16px;
   transition: background-color 0.4s ease;
 }
@@ -110,7 +112,7 @@ body {
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: white;
+  color: var(--light);
 }
 
 .footer>a:hover {

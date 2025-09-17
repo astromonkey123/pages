@@ -1,5 +1,5 @@
 .title {
-  color: white;
+  color: var(--light);
 }
 
 .project {
@@ -12,7 +12,7 @@
   overflow: hidden;
   box-shadow: 0 0 10px 10px var(--shadow);
   transition: all 0.4s ease;
-  color: white;
+  color: var(--light);
 }
 
 .project:hover {
@@ -72,13 +72,13 @@
   height: 30px;
   padding-left: 10px; padding-right: 10px;
   font-size: 14px;
-  color: white;
+  color: var(--light);
   display: flex;
   align-items: center;
   margin-right: 5px;
   border-radius: 15px;
   border-width: 1px;
   border-style: solid;
-  border-color: white;
+  border-color: var(--light);
   box-sizing: border-box;
 }
